@@ -1,4 +1,4 @@
-import { GameRepository } from "../../models/game.js";
+import { PlatformRepository } from "../../models/platform.js";
 import { notFound } from "../../utils/errors/not-found.js";
 
 /**
@@ -6,13 +6,13 @@ import { notFound } from "../../utils/errors/not-found.js";
  * @param {import('express').Request} req - The Express request object.
  * @param {import('express').Response} res - The Express response object.
  */
-export async function removeGame(req, res) {
+export async function getPlatform(req, res) {
   const { id } = req.params;
 
-  const game = await GameRepository.delete(id);
-  if (!game) {
+  const platform = await PlatformRepository.getById(id);
+  if (!platform) {
     throw notFound();
   }
 
-  return game;
+  return platform;
 }

@@ -14,6 +14,3 @@ gameRouter.get("/:id", authentication, wrap(getGame));
 gameRouter.post("/", authentication, wrap(createGame));
 gameRouter.put("/:id", authentication, wrap(updateGame));
 gameRouter.delete("/:id", authentication, wrap(removeGame));
-
-// authRouter.post("/login", wrap(login));
-// authRouter.get("/me", authentication, wrap(getLoggedUser));

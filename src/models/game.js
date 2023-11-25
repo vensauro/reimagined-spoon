@@ -1,19 +1,12 @@
-import { DataTypes } from "sequelize";
-import { sequelize } from "./index.js";
 import { db } from "../utils/sqlite-db.js";
 
-export const GameSequelize = sequelize.define("Game", {
-  name: DataTypes.STRING,
-  description: DataTypes.STRING,
-  image: DataTypes.STRING,
-});
-
 class Game {
-  constructor(id, name, description, image, createdAt, updatedAt) {
+  constructor(id, name, description, image, platformId, createdAt, updatedAt) {
     this.id = id;
     this.name = name;
     this.description = description;
     this.image = image;
+    this.platformId = platformId;
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
   }

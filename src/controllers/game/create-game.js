@@ -1,6 +1,3 @@
-import { compare } from "bcrypt";
-import { db } from "../../utils/sqlite-db.js";
-import { Forbidden } from "../../utils/errors/forbidden.js";
 import { GameRepository } from "../../models/game.js";
 
 /**
@@ -8,6 +5,7 @@ import { GameRepository } from "../../models/game.js";
  * @property {string} name - The game name.
  * @property {string} description - The game description.
  * @property {string} image - The game image.
+ * @property {string} platformId - The game platform.
  */
 
 /**

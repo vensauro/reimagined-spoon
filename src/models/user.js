@@ -1,16 +1,4 @@
-import { DataTypes } from "sequelize";
-import { sequelize } from "./index.js";
 import { db } from "../utils/sqlite-db.js";
-
-export const UserSequelize = sequelize.define("User", {
-  username: DataTypes.STRING,
-  email: {
-    type: DataTypes.STRING,
-    unique: true,
-  },
-  password: DataTypes.STRING,
-  role: DataTypes.STRING,
-});
 
 class User {
   constructor(id, username, email, password, role, createdAt, updatedAt) {
