@@ -1,4 +1,6 @@
 import { GameRepository } from "../../models/game.js";
+import { PlatformRepository } from "../../models/platform.js";
+import { badRequest } from "../../utils/errors/bad-request.js";
 
 /**
  * @typedef {Object} GameRequestBody
@@ -9,14 +11,23 @@ import { GameRepository } from "../../models/game.js";
  */
 
 /**
- * Handles user login.
  * @param {import('express').Request<{}, {}, GameRequestBody>} req - The Express request object.
  * @param {import('express').Response} res - The Express response object.
  */
 export async function createGame(req, res) {
-  const { name, description, image } = req.body;
+  const { name, description, image, platformId } = req.body;
 
-  const game = await GameRepository.create(name, description, image);
+  const platform = await PlatformRepository.getById(platformId);
+  if (!platform) {
+    throw badRequest();
+  }
+
+  const game = await GameRepository.create(
+    name,
+    description,
+    image,
+    platformId
+  );
 
   res.status(201);
   return game;

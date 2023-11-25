@@ -49,6 +49,15 @@ export class PlatformRepository {
     return platforms.map(Platform.fromJSON);
   }
 
+  static async findAllById(ids) {
+    const placeholders = ids.map(() => "?").join(",");
+    const platforms = await db.all(
+      `SELECT * FROM Platforms WHERE id in (${placeholders})`,
+      ids
+    );
+    return platforms.map(Platform.fromJSON);
+  }
+
   static async create(name, description, image, link) {
     const result = await db.run(
       "INSERT INTO Platforms (name, description, image, link, createdAt, updatedAt) VALUES (?, ?, ?, ?, datetime('now'), datetime('now'))",

@@ -14,7 +14,7 @@ import { sequelize } from "./models/sequelize-init.js";
 
 const app = express();
 
-await sequelize.sync({ force: true });
+await sequelize.sync({ force: false });
 
 app.use(express.json());
 
