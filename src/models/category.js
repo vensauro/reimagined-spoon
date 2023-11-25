@@ -46,7 +46,7 @@ export class CategoryRepository {
     return this.getById(result.lastID);
   }
 
-  static async update(id, name, description, image) {
+  static async update(id, name, description) {
     await db.run(
       "UPDATE Categories SET name = ?, description = ?, updatedAt = datetime('now') WHERE id = ?",
       name,

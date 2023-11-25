@@ -5,7 +5,7 @@ import { PlatformRepository } from "../../models/platform.js";
  * @param {import('express').Request} req - The Express request object.
  * @param {import('express').Response} res - The Express response object.
  */
-export async function listPlatform(req, res) {
+export async function listPlatforms(req, res) {
   const platforms = await PlatformRepository.findAll();
 
   return platforms;

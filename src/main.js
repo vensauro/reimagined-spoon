@@ -5,6 +5,7 @@ import {
   authRouter,
   gameRouter,
   platformRouter,
+  categoryRouter,
 } from "./controllers/router.js";
 import {
   genericErrorHandler,
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use("/auth", authRouter);
 app.use("/games", gameRouter);
 app.use("/platforms", platformRouter);
+app.use("/categories", categoryRouter);
 
 app.use(notFoundHandler);
 app.use(genericErrorHandler);
