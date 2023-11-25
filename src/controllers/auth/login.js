@@ -1,7 +1,7 @@
 import { compare } from "bcrypt";
-import { db } from "../../utils/sqlite-db.js";
-import { Forbidden } from "../../utils/errors/forbidden.js";
 import jsonwebtoken from "jsonwebtoken";
+import { UserRepository } from "../../models/user.js";
+import { Forbidden } from "../../utils/errors/forbidden.js";
 
 const { sign } = jsonwebtoken;
 
@@ -19,9 +19,9 @@ const { sign } = jsonwebtoken;
 export async function login(req, res) {
   const { email, password } = req.body;
 
-  const userRaw = await db.get("SELECT * FROM Users WHERE email = ?", email);
+  const user = await UserRepository.getByEmail(email);
 
-  const isPasswordCorrect = await compare(password, userRaw.password);
+  const isPasswordCorrect = await compare(password, user.password);
 
   if (!isPasswordCorrect) {
     throw new Forbidden(req.url);
@@ -30,9 +30,9 @@ export async function login(req, res) {
   const token = sign(
     {
       user: {
-        id: userRaw.id,
-        username: userRaw.username,
-        email: userRaw.email,
+        id: user.id,
+        username: user.username,
+        email: user.email,
       },
     },
     process.env.JWT_KEY,

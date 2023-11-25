@@ -27,13 +27,3 @@ export function genericErrorHandler(error, req, res, next) {
     instance: req.url,
   });
 }
-
-export function forbidden(req, res) {
-  res.status(403).json({
-    type: `https://http.cat/${403}`,
-    title: "FORBIDDEN",
-    status: 403,
-    detail: `Access to the resource ${req.url} is forbidden`,
-    instance: req.url,
-  });
-}

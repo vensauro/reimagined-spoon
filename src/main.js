@@ -1,12 +1,10 @@
 import "dotenv/config";
 
-import { sequelize } from "./models/index.js";
-
 import { sequelizeSync } from "./models/sync.js";
 
 import express from "express";
-import { db } from "./utils/sqlite-db.js";
 import { authRouter } from "./controllers/auth/router.js";
+import { gameRouter } from "./controllers/game/router.js";
 import {
   genericErrorHandler,
   notFoundHandler,
@@ -19,6 +17,7 @@ await sequelizeSync();
 app.use(express.json());
 
 app.use("/auth", authRouter);
+app.use("/games", gameRouter);
 app.use(notFoundHandler);
 app.use(genericErrorHandler);
 

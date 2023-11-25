@@ -42,11 +42,13 @@ class User {
 export class UserRepository {
   static async getById(id) {
     const user = await db.get("SELECT * FROM Users WHERE id = ?", id);
+    if (!user) return null;
     return User.fromJSON(user);
   }
 
   static async getByEmail(email) {
     const user = await db.get("SELECT * FROM Users WHERE email = ?", email);
+    if (!user) return null;
     return User.fromJSON(user);
   }
 
@@ -58,8 +60,6 @@ export class UserRepository {
       hashPassword,
       "user"
     );
-
-    // return User.fromJSON(user);
   }
   static async update(id, username) {
     await db.run(
@@ -67,7 +67,5 @@ export class UserRepository {
       username,
       id
     );
-
-    // return User.fromJSON(user);
   }
 }
