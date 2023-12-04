@@ -13,12 +13,14 @@ import {
   notFoundHandler,
 } from "./utils/error-middleware.js";
 import { sequelize } from "./models/sequelize-init.js";
+import cors from "cors";
 
 const app = express();
 
 await sequelize.sync({ force: false });
 
 app.use(express.json());
+app.use(cors());
 
 app.use("/auth", authRouter);
 app.use("/games", gameRouter);
