@@ -3,7 +3,10 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import ErrorPage from "./error-page.jsx";
-import Root, { loader as rootLoader } from "./routes/root.jsx";
+import Root, {
+  loader as rootLoader,
+  action as rootAction,
+} from "./routes/root.jsx";
 import Contact, {
   loader as contactLoader,
   action as contactAction,
@@ -13,23 +16,19 @@ import { action as destroyAction } from "./routes/destroy";
 
 import "./index.css";
 import Index from "./routes/index.jsx";
-import { GamesPage } from "./routes/games.jsx";
-import { LoginPage } from "./routes/login.jsx";
 
 const router = createBrowserRouter([
   {
-    id: "root",
     path: "/",
     element: <Root />,
     loader: rootLoader,
+    action: rootAction,
     errorElement: <ErrorPage />,
     children: [
       {
         errorElement: <ErrorPage />,
         children: [
           { index: true, element: <Index /> },
-          { path: "/login", element: <LoginPage /> },
-          { path: "/games", element: <GamesPage /> },
           {
             path: "contacts/:contactId",
             element: <Contact />,

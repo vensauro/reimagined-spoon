@@ -40,36 +40,3 @@
   background-color: var(--cor2);
   border-radius: 10px;
 }
-
-.search-container {
-  margin-left: 2vw;
-  padding: 10px;
-}
-
-.login {
-  display: block;
-  position: absolute;
-  right: 0;
-  color: white;
-  padding: 45px 25px 25px 25px;
-}
-
-.user-avatar {
-  width: 40px;
-  height: 40px;
-
-  display: block;
-  margin: auto;
-  border-radius: 50%;
-}
-
-.user-container {
-  display: flex;
-  justify-content: center;
-  font-family: var(--fonte-padrao);
-}
-
-.user-name {
-  font-size: 1em;
-  font-weight: 600;
-}

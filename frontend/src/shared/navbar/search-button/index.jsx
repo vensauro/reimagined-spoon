@@ -1,6 +1,6 @@
+import blueMagnifier from "../../../assets/loupe-blue.svg";
+import whiteMagnifier from "../../../assets/loupe-white.svg";
 import "./styles.css";
-import blueMagnifier from "../../assets/loupe-blue.svg";
-import whiteMagnifier from "../../assets/loupe-white.svg";
 
 export function SearchButton() {
   return (
