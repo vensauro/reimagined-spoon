@@ -7,6 +7,7 @@ export const sequelize = new Sequelize({
 
 const User = sequelize.define("User", {
   username: DataTypes.STRING,
+  avatar: DataTypes.STRING,
   email: {
     type: DataTypes.STRING,
     unique: true,

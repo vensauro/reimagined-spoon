@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./index.css";
 
 import ErrorPage from "./error-page.jsx";
 import Root, { loader as rootLoader } from "./routes/root.jsx";
@@ -11,10 +12,19 @@ import Contact, {
 import EditContact, { action as editAction } from "./routes/edit.jsx";
 import { action as destroyAction } from "./routes/destroy";
 
-import "./index.css";
 import Index from "./routes/index.jsx";
 import { GamesPage } from "./routes/games.jsx";
-import { LoginPage } from "./routes/login.jsx";
+import {
+  LoginPage,
+  loader as loginLoader,
+  action as loginAction,
+} from "./routes/login/index.jsx";
+import {
+  RegisterPage,
+  loader as registerLoader,
+  action as registerAction,
+} from "./routes/login/register.jsx";
+import { logout } from "./routes/login/logout.jsx";
 
 const router = createBrowserRouter([
   {
@@ -28,7 +38,19 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />,
         children: [
           { index: true, element: <Index /> },
-          { path: "/login", element: <LoginPage /> },
+          {
+            path: "/login",
+            element: <LoginPage />,
+            loader: loginLoader,
+            action: loginAction,
+          },
+          {
+            path: "/cadastro",
+            element: <RegisterPage />,
+            loader: registerLoader,
+            action: registerAction,
+          },
+          { path: "/logout", action: logout },
           { path: "/games", element: <GamesPage /> },
           {
             path: "contacts/:contactId",

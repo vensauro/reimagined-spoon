@@ -6,7 +6,8 @@ import { hash } from "bcrypt";
  * @typedef {Object} RegisterRequestBody
  * @property {string} email - The user's email.
  * @property {string} password - The user's password.
- * @property {username} password - The user's password.
+ * @property {string} username - The user's username.
+ * @property {string} avatar - The user's avatar.
  */
 
 /**
@@ -15,11 +16,11 @@ import { hash } from "bcrypt";
  * @param {import('express').Response} res - The Express response object.
  */
 export async function register(req, res) {
-  const { username, email, password } = req.body;
+  const { username, avatar, email, password } = req.body;
 
   const hashPassword = await hash(password, 10);
 
-  await UserRepository.create(username, email, hashPassword);
+  await UserRepository.create(username, avatar, email, hashPassword);
 
   return {
     message: "registered",

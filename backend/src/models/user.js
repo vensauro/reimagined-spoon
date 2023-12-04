@@ -1,9 +1,19 @@
 import { db } from "../utils/sqlite-db.js";
 
 class User {
-  constructor(id, username, email, password, role, createdAt, updatedAt) {
+  constructor(
+    id,
+    username,
+    avatar,
+    email,
+    password,
+    role,
+    createdAt,
+    updatedAt
+  ) {
     this.id = id;
     this.username = username;
+    this.avatar = avatar;
     this.email = email;
     this.password = password;
     this.role = role;
@@ -12,14 +22,33 @@ class User {
   }
 
   static fromJSON(json) {
-    const { id, username, email, password, role, createdAt, updatedAt } = json;
-    return new User(id, username, email, password, role, createdAt, updatedAt);
+    const {
+      id,
+      username,
+      avatar,
+      email,
+      password,
+      role,
+      createdAt,
+      updatedAt,
+    } = json;
+    return new User(
+      id,
+      username,
+      avatar,
+      email,
+      password,
+      role,
+      createdAt,
+      updatedAt
+    );
   }
 
   toJSON() {
     return {
       id: this.id,
       username: this.username,
+      avatar: this.avatar,
       email: this.email,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt,
@@ -40,19 +69,21 @@ export class UserRepository {
     return User.fromJSON(user);
   }
 
-  static async create(username, email, hashPassword) {
+  static async create(username, avatar, email, hashPassword) {
     return db.run(
-      "INSERT INTO Users (username, email, password, role, createdAt, updatedAt) VALUES (?, ?, ?, ?, datetime('now'), datetime('now'))",
+      "INSERT INTO Users (username, avatar, email, password, role, createdAt, updatedAt) VALUES (?, ?, ?, ?, ?, datetime('now'), datetime('now'))",
       username,
+      avatar,
       email,
       hashPassword,
       "user"
     );
   }
-  static async update(id, username) {
+  static async update(id, username, avatar) {
     await db.run(
-      "UPDATE Users SET username = ?, updatedAt = datetime('now') WHERE id = ?",
+      "UPDATE Users SET username = ?, avatar = ?, updatedAt = datetime('now') WHERE id = ?",
       username,
+      avatar,
       id
     );
   }
