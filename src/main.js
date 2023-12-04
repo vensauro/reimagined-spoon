@@ -6,6 +6,7 @@ import {
   gameRouter,
   platformRouter,
   categoryRouter,
+  userGameRouter,
 } from "./controllers/router.js";
 import {
   genericErrorHandler,
@@ -23,6 +24,7 @@ app.use("/auth", authRouter);
 app.use("/games", gameRouter);
 app.use("/platforms", platformRouter);
 app.use("/categories", categoryRouter);
+app.use("/user-games", userGameRouter);
 
 app.use(notFoundHandler);
 app.use(genericErrorHandler);

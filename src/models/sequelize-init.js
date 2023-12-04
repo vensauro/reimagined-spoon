@@ -34,7 +34,15 @@ const Category = sequelize.define("Category", {
 });
 
 const UserGame = sequelize.define("UserGame", {
-  rate: DataTypes.NUMBER,
+  id: {
+    type: DataTypes.INTEGER,
+    autoIncrement: true,
+    primaryKey: true,
+  },
+  rate: {
+    type: DataTypes.NUMBER,
+    allowNull: true,
+  },
 });
 
 Platform.hasMany(Game);

@@ -1,7 +1,7 @@
 import { db } from "../utils/sqlite-db.js";
 import { PlatformRepository } from "./platform.js";
 
-class Game {
+export class Game {
   constructor(id, name, description, image, platform, createdAt, updatedAt) {
     this.id = id;
     this.name = name;
