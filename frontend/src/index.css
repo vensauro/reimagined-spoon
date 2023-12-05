@@ -42,6 +42,8 @@
     #4944e3 100%
   );
   transition: 0.8s;
+  box-sizing: content-box;
+  cursor: pointer;
 }
 
 .secondary-bg {

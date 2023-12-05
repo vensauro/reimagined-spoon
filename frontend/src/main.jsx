@@ -46,6 +46,7 @@ import {
 import {
   LibraryGame,
   loader as userGameLoader,
+  action as removeGameAction,
 } from "./routes/library/detail/index.jsx";
 
 const router = createBrowserRouter([
@@ -95,6 +96,7 @@ const router = createBrowserRouter([
             path: "/biblioteca/:gameId",
             element: <LibraryGame />,
             loader: userGameLoader,
+            action: removeGameAction,
           },
           {
             path: "/biblioteca/adicionar",

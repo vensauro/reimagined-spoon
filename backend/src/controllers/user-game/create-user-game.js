@@ -21,7 +21,15 @@ export async function createUserGame(req, res) {
     throw badRequest("game id wrong");
   }
 
-  const userGame = await UserGameRepository.create(rate, req.user.id, game.id);
+  try {
+    const userGame = await UserGameRepository.create(
+      rate,
+      req.user.id,
+      game.id
+    );
+  } catch {
+    throw badRequest();
+  }
 
   res.status(201);
   return userGame;

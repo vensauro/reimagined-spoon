@@ -18,7 +18,7 @@ export function LibraryPage() {
         <PageTitle>Minha Biblioteca</PageTitle>
         <div className="games-listing" id="games">
           {library.map((userGame) => (
-            <Link key={userGame.id} to="/biblioteca/2">
+            <Link key={userGame.id} to={`/biblioteca/${userGame.game.id}`}>
               <div className="game-card">
                 <img
                   className="game-library-image"

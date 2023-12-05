@@ -159,7 +159,10 @@ WHERE
       userId,
       gameId
     );
-    return this.findById(result.lastID);
+
+    return result;
+    // console.log(result);
+    // return this.findById(result.lastID);
   }
 
   static async update(userId, gameId, rate) {

@@ -1,6 +1,6 @@
-import { useLoaderData } from "react-router-dom";
+import { Form, redirect, useLoaderData } from "react-router-dom";
 import { getGame } from "../../../api/games";
-import { getUserGame } from "../../../api/user-game";
+import { deleteGameFromLibrary, getUserGame } from "../../../api/user-game";
 import { authLoader } from "../../../shared/auth/auth-loader";
 import { PageTitle } from "../../../shared/page-title";
 import "./styles.css";
@@ -17,6 +17,11 @@ export const loader = authLoader(async ({ params }) => {
   const game = await getGame(gameLibrary.game.id);
   return { gameLibrary, game };
 });
+
+export async function action({ params }) {
+  await deleteGameFromLibrary(params.gameId);
+  return redirect("/biblioteca");
+}
 
 export function LibraryGame() {
   const { gameLibrary, game } = useLoaderData();
@@ -70,9 +75,11 @@ export function LibraryGame() {
         <a className="primary-button" href="">
           Editar Jogo
         </a>
-        <a className="primary-button secondary-bg" href="">
-          Remover Jogo
-        </a>
+        <Form method="post">
+          <button type="submit" className="primary-button secondary-bg" href="">
+            Remover Jogo
+          </button>
+        </Form>
       </section>
     </div>
   );

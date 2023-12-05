@@ -35,7 +35,6 @@
 
 .game-description {
   width: 535px;
-  box-sizing: border-box;
   word-wrap: break-word;
 }
 
