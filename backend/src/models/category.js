@@ -65,4 +65,12 @@ export class CategoryRepository {
 
     return category;
   }
+
+  static async getGamesCategory(gameId) {
+    const rawCategories = await db.all(
+      "SELECT * FROM Categories WHERE id IN (SELECT id FROM GameCategory WHERE GameId = ?)",
+      gameId
+    );
+    return rawCategories.map(Category.fromJSON);
+  }
 }

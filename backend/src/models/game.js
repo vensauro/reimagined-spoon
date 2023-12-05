@@ -8,6 +8,7 @@ export class Game {
     this.description = description;
     this.image = image;
     this.launchDate = launchDate;
+    this.categories = [];
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
   }
@@ -33,6 +34,7 @@ export class Game {
       description: this.description,
       image: this.image,
       launchDate: this.launchDate,
+      categories: this.categories,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt,
     };
@@ -84,5 +86,21 @@ export class GameRepository {
     await db.run("DELETE FROM Games WHERE id = ?", id);
 
     return game;
+  }
+
+  static async addCategory(gameId, categoryId) {
+    const result = await db.run(
+      "INSERT INTO GameCategory (GameId, CategoryId, createdAt, updatedAt) VALUES (?, ?, datetime('now'), datetime('now'))",
+      gameId,
+      categoryId
+    );
+  }
+
+  static async removeCategory(gameId, categoryId) {
+    await db.run(
+      "DELETE FROM GameCategory WHERE GameId = ? AND CategoryId = ?",
+      gameId,
+      categoryId
+    );
   }
 }

@@ -1,3 +1,4 @@
+import { CategoryRepository } from "../../models/category.js";
 import { GameRepository } from "../../models/game.js";
 import { notFound } from "../../utils/errors/not-found.js";
 
@@ -13,6 +14,8 @@ export async function getGame(req, res) {
   if (!game) {
     throw notFound();
   }
+
+  game.categories = await CategoryRepository.getGamesCategory(game.id);
 
   return game;
 }
