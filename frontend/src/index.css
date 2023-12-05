@@ -44,6 +44,15 @@
   transition: 0.8s;
 }
 
+.secondary-bg {
+  background-image: linear-gradient(
+    to right,
+    #e61717 4.24%,
+    #b33636 79.05%,
+    #804040 100%
+  );
+}
+
 .root-container {
   background-image: linear-gradient(
     to bottom,

@@ -1,0 +1,58 @@
+.game-library-detail-root {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.game-image-container {
+  width: 500px;
+  margin: auto;
+}
+
+.game-image {
+  border-radius: 20px;
+  width: 500px;
+  height: 250px;
+}
+
+.info {
+  display: flex;
+  padding: 50px 0px 50px 0px;
+}
+
+.info aside {
+  width: 45vw;
+  height: 300px;
+  color: white;
+  font-family: var(--fonte-padrao);
+  font-weight: 600;
+  text-align: justify;
+}
+
+.info aside h2 {
+  font-family: var(--fonte-titulo2);
+  text-align: center;
+}
+
+.game-description {
+  width: 535px;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+
+.game-detail-info-listing {
+  list-style-type: none;
+  width: 39vw;
+}
+
+.game-detail-info-item {
+  text-align: left;
+  color: white;
+  font-family: var(--fonte-padrao);
+  font-weight: 600;
+}
+
+.game-detail-button-container {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}

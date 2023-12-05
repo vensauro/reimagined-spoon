@@ -43,6 +43,10 @@ import {
   loader as gamesCreateLoader,
   action as gamesCreateAction,
 } from "./routes/games/create/index.jsx";
+import {
+  LibraryGame,
+  loader as userGameLoader,
+} from "./routes/library/detail/index.jsx";
 
 const router = createBrowserRouter([
   {
@@ -86,6 +90,11 @@ const router = createBrowserRouter([
             path: "/biblioteca",
             element: <LibraryPage />,
             loader: libraryLoader,
+          },
+          {
+            path: "/biblioteca/:gameId",
+            element: <LibraryGame />,
+            loader: userGameLoader,
           },
           {
             path: "/biblioteca/adicionar",
