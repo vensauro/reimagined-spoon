@@ -1,17 +1,9 @@
-import {
-  Form,
-  redirect,
-  useActionData,
-  useLoaderData,
-  useLocation,
-} from "react-router-dom";
-import Select from "react-select";
+import { Form, redirect, useActionData, useLocation } from "react-router-dom";
 import { createGame } from "../../../api/games";
 import { FormButton } from "../../../shared/form-button";
 import { FormContainer } from "../../../shared/form-container";
 import { Input } from "../../../shared/input";
 
-import { getPlatforms } from "../../../api/platforms";
 import { authLoader } from "../../../shared/auth/auth-loader";
 import "./styles.css";
 
@@ -35,15 +27,9 @@ export async function action({ request }) {
   return redirect(redirectLink ?? "/");
 }
 
-export const loader = authLoader(async () => {
-  const platforms = await getPlatforms();
-
-  return { platforms };
-});
+export const loader = authLoader();
 
 export function GamesCreatePage() {
-  const { platforms } = useLoaderData();
-
   let actionData = useActionData();
 
   const location = useLocation();
@@ -61,20 +47,7 @@ export function GamesCreatePage() {
         />
         <Input label="Descrição" type="text" name="description" />
         <Input label="URL da imagem" type="text" name="image" />
-
-        <div className="input-container">
-          <p>Plataforma</p>
-          <Select
-            isClearable
-            options={platforms.map((platform) => ({
-              value: platform.id,
-              label: platform.name,
-            }))}
-            name="platformId"
-            className="input-select"
-            placeholder="Selecione a plataforma"
-          />
-        </div>
+        <Input label="Ano de Lançamento" type="date" name="launchDate" />
 
         {actionData?.error && (
           <div className="error-container">

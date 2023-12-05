@@ -20,6 +20,7 @@ const Game = sequelize.define("Game", {
   name: DataTypes.STRING,
   description: DataTypes.STRING,
   image: DataTypes.STRING,
+  launchDate: DataTypes.DATE,
 });
 
 const Platform = sequelize.define("Platform", {
@@ -46,11 +47,11 @@ const UserGame = sequelize.define("UserGame", {
   },
 });
 
-Platform.hasMany(Game);
-Game.belongsTo(Platform);
+Platform.hasMany(UserGame);
+UserGame.belongsTo(Platform);
+
+Game.belongsToMany(Category, { through: "GameCategory" });
+Category.belongsToMany(Game, { through: "GameCategory" });
 
 User.belongsToMany(Game, { through: UserGame });
 Game.belongsToMany(User, { through: UserGame });
-
-UserGame.belongsToMany(Category, { through: "UserGameCategory" });
-Category.belongsToMany(UserGame, { through: "UserGameCategory" });

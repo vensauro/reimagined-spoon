@@ -1,6 +1,6 @@
 import { db } from "../utils/sqlite-db.js";
 
-class Platform {
+export class Platform {
   constructor(id, name, description, image, link, createdAt, updatedAt) {
     this.id = id;
     this.name = name;

@@ -2,24 +2,25 @@ import { db } from "../utils/sqlite-db.js";
 import { PlatformRepository } from "./platform.js";
 
 export class Game {
-  constructor(id, name, description, image, platform, createdAt, updatedAt) {
+  constructor(id, name, description, image, launchDate, createdAt, updatedAt) {
     this.id = id;
     this.name = name;
     this.description = description;
     this.image = image;
-    this.platform = platform;
+    this.launchDate = launchDate;
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
   }
 
-  static fromJSON(game, platform) {
-    const { id, name, description, image, createdAt, updatedAt } = game;
+  static fromJSON(game) {
+    const { id, name, description, image, launchDate, createdAt, updatedAt } =
+      game;
     return new Game(
       id,
       name,
       description,
       image,
-      platform,
+      launchDate,
       createdAt,
       updatedAt
     );
@@ -31,7 +32,7 @@ export class Game {
       name: this.name,
       description: this.description,
       image: this.image,
-      platform: this.platform,
+      launchDate: this.launchDate,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt,
     };
@@ -41,44 +42,35 @@ export class Game {
 export class GameRepository {
   static async getById(id) {
     const game = await db.get("SELECT * FROM Games WHERE id = ?", id);
-    const platform = await PlatformRepository.getById(game.PlatformId);
 
     if (!game) return null;
-    return Game.fromJSON(game, platform);
+    return Game.fromJSON(game);
   }
 
   static async findAll() {
     const rawGames = await db.all("SELECT * FROM Games");
-    const platforms = await PlatformRepository.findAllById(
-      rawGames.map((e) => e.PlatformId)
-    );
 
-    return rawGames.map((rawGame) =>
-      Game.fromJSON(
-        rawGame,
-        platforms.find((p) => p.id === rawGame.PlatformId)
-      )
-    );
+    return rawGames.map(Game.fromJSON);
   }
 
-  static async create(name, description, image, platformId) {
+  static async create(name, description, image, launchDate) {
     const result = await db.run(
-      "INSERT INTO Games (name, description, image, PlatformId, createdAt, updatedAt) VALUES (?, ?, ?, ?, datetime('now'), datetime('now'))",
+      "INSERT INTO Games (name, description, image, launchDate, createdAt, updatedAt) VALUES (?, ?, ?, ?, datetime('now'), datetime('now'))",
       name,
       description,
       image,
-      platformId
+      launchDate
     );
     return this.getById(result.lastID);
   }
 
-  static async update(id, name, description, image, platformId) {
+  static async update(id, name, description, image, launchDate) {
     const result = await db.run(
-      "UPDATE Games SET name = ?, description = ?, image = ?, PlatformId = ?, updatedAt = datetime('now') WHERE id = ?",
+      "UPDATE Games SET name = ?, description = ?, image = ?, launchDate = ?, updatedAt = datetime('now') WHERE id = ?",
       name,
       description,
       image,
-      platformId,
+      launchDate,
       id
     );
 

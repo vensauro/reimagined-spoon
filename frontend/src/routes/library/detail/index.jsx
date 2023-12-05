@@ -26,7 +26,8 @@ export async function action({ params }) {
 export function LibraryGame() {
   const { gameLibrary, game } = useLoaderData();
 
-  console.log(gameLibrary);
+  // console.log(gameLibrary);
+  // console.log(game);
   return (
     <div className="game-library-detail-root">
       <section>
@@ -39,7 +40,7 @@ export function LibraryGame() {
         <article className="info">
           <ul className="game-detail-info-listing">
             <li className="game-detail-info-item">
-              Plataforma : <span>{game.platform.name}</span>
+              Plataforma : <span>{gameLibrary.platform.name}</span>
             </li>
             <li className="game-detail-info-item">
               Nota : <span>{gameLibrary.rate}</span>
@@ -58,7 +59,7 @@ export function LibraryGame() {
               Recomendo : <span></span>
             </li>
             <li className="game-detail-info-item">
-              Ano de Lançamento : <span></span>
+              Ano de Lançamento : <span>{formatDate(game.launchDate)}</span>
             </li>
             <li className="game-detail-info-item">
               Versão : <span></span>
@@ -83,4 +84,13 @@ export function LibraryGame() {
       </section>
     </div>
   );
+}
+
+function formatDate(stringDate) {
+  const date = new Date(stringDate);
+  const day = String(date.getDay()).padStart(2, "0");
+  const month = String(date.getMonth()).padStart(2, "0");
+  const year = date.getFullYear();
+
+  return `${day}/${month}/${year}`;
 }

@@ -7,7 +7,7 @@ import { notFound } from "../../utils/errors/not-found.js";
  * @property {string} name - The game name.
  * @property {string} description - The game description.
  * @property {string} image - The game image.
- * @property {string} platformId - The game platform.
+ * @property {string} launchDate - The game launch date.
  */
 
 /**
@@ -16,7 +16,7 @@ import { notFound } from "../../utils/errors/not-found.js";
  * @param {import('express').Response} res - The Express response object.
  */
 export async function updateGame(req, res) {
-  const { name, description, image, platformId } = req.body;
+  const { name, description, image, launchDate } = req.body;
   const { id } = req.params;
 
   const game = await GameRepository.getById(id);
@@ -24,17 +24,12 @@ export async function updateGame(req, res) {
     throw notFound();
   }
 
-  const platform = await PlatformRepository.getById(platformId);
-  if (!platform) {
-    throw badRequest();
-  }
-
   const updatedGame = await GameRepository.update(
     id,
     name,
     description,
     image,
-    platformId
+    launchDate
   );
 
   return updatedGame;

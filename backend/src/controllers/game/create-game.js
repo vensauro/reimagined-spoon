@@ -7,7 +7,7 @@ import { badRequest } from "../../utils/errors/bad-request.js";
  * @property {string} name - The game name.
  * @property {string} description - The game description.
  * @property {string} image - The game image.
- * @property {string} platformId - The game platform.
+ * @property {string} launchDate - The game launch date.
  */
 
 /**
@@ -15,18 +15,13 @@ import { badRequest } from "../../utils/errors/bad-request.js";
  * @param {import('express').Response} res - The Express response object.
  */
 export async function createGame(req, res) {
-  const { name, description, image, platformId } = req.body;
-
-  const platform = await PlatformRepository.getById(platformId);
-  if (!platform) {
-    throw badRequest();
-  }
+  const { name, description, image, launchDate } = req.body;
 
   const game = await GameRepository.create(
     name,
     description,
     image,
-    platformId
+    launchDate
   );
 
   res.status(201);

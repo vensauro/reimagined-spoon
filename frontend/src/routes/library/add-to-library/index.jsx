@@ -11,30 +11,27 @@ import { Input } from "../../../shared/input";
 import CreatableSelect from "react-select/creatable";
 import "./styles.css";
 import { getGames } from "../../../api/games";
-// import Select from "react-select";
 import { addGameToLibrary } from "../../../api/user-game";
+import { getPlatforms } from "../../../api/platforms";
+import Select from "react-select";
 
 export async function action({ request }) {
   const formData = await request.formData();
   const updates = Object.fromEntries(formData);
 
-  console.log(updates);
-
-  const rate = Number(updates.rate);
   if (!updates.gameId) {
     return {
       error: "Selecione o jogo!",
     };
   }
 
-  for (const field in updates) {
-    if (!updates[field]) {
-      return {
-        error: `Necessário o campo ${field}`,
-      };
-    }
+  if (!updates.platformId) {
+    return {
+      error: "Selecione a plataforma!",
+    };
   }
 
+  const rate = Number(updates.rate);
   if (Number.isNaN(rate)) {
     return {
       error: "Nota de avaliação deve ser número",
@@ -48,12 +45,12 @@ export async function action({ request }) {
 
 export const loader = authLoader(async () => {
   const games = await getGames();
-
-  return { games };
+  const platforms = await getPlatforms();
+  return { games, platforms };
 });
 
 export function AddGameToLibraryPage() {
-  const { games } = useLoaderData();
+  const { games, platforms } = useLoaderData();
   let actionData = useActionData();
   const navigate = useNavigate();
 
@@ -76,6 +73,19 @@ export function AddGameToLibraryPage() {
             name="gameId"
             className="game-select"
             placeholder="Selecione o jogo"
+          />
+        </div>
+        <div className="input-container">
+          <p>Plataforma</p>
+          <Select
+            isClearable
+            options={platforms.map((platform) => ({
+              value: platform.id,
+              label: platform.name,
+            }))}
+            name="platformId"
+            className="input-select"
+            placeholder="Selecione a plataforma"
           />
         </div>
         {/* <div className="input-container">
