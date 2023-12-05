@@ -48,6 +48,11 @@ import {
   loader as userGameLoader,
   action as removeGameAction,
 } from "./routes/library/detail/index.jsx";
+import {
+  EditLibraryGamePage,
+  loader as editLibraryLoader,
+  action as editLibraryAction,
+} from "./routes/library/edit-library-item/index.jsx";
 
 const router = createBrowserRouter([
   {
@@ -103,6 +108,12 @@ const router = createBrowserRouter([
             element: <AddGameToLibraryPage />,
             loader: addToLibraryLoader,
             action: addToLibraryAction,
+          },
+          {
+            path: "/biblioteca/:gameId/editar",
+            element: <EditLibraryGamePage />,
+            loader: editLibraryLoader,
+            action: editLibraryAction,
           },
           {
             path: "/games/criar",

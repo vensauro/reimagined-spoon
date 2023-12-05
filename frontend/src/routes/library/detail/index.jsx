@@ -1,4 +1,4 @@
-import { Form, redirect, useLoaderData } from "react-router-dom";
+import { Form, Link, redirect, useLoaderData } from "react-router-dom";
 import { getGame } from "../../../api/games";
 import { deleteGameFromLibrary, getUserGame } from "../../../api/user-game";
 import { authLoader } from "../../../shared/auth/auth-loader";
@@ -74,9 +74,9 @@ export function LibraryGame() {
         </article>
       </section>
       <section className="game-detail-button-container">
-        <a className="primary-button" href="">
+        <Link className="primary-button" to={`/biblioteca/${game.id}/editar`}>
           Editar Jogo
-        </a>
+        </Link>
         <Form method="post">
           <button type="submit" className="primary-button secondary-bg" href="">
             Remover Jogo
