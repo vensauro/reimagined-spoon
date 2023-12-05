@@ -113,6 +113,40 @@ class UserGame {
 }
 
 export class UserGameRepository {
+  static getDefaultSql() {
+    return `
+SELECT
+  UserGames.id as id,
+  UserGames.rate as rate,
+  UserGames.status as status,
+  UserGames.progress as progress,
+  UserGames.recommendation as recommendation,
+  UserGames.mediaType as mediaType,
+  UserGames.createdAt as createdAt,
+  UserGames.updatedAt as updatedAt,
+
+  g.id AS gameId,
+  g.name AS gameName,
+  g.description AS gameDescription,
+  g.image AS gameImage,
+  g.createdAt AS gameCreatedAt,
+  g.updatedAt AS gameUpdatedAt,
+
+  p.id AS platformId,
+  p.name AS platformName,
+  p.description AS platformDescription,
+  p.image AS platformImage,
+  p.link AS platformLink,
+  p.createdAt AS platformCreatedAt,
+  p.updatedAt AS platformUpdatedAt
+FROM
+  UserGames
+LEFT JOIN
+  Games g ON UserGames.GameId = g.id
+LEFT JOIN
+  Platforms p ON UserGames.PlatformId = p.id
+  `;
+  }
   static async findById(id) {
     const userGame = await db.get(
       `
@@ -268,9 +302,29 @@ LEFT JOIN
 LEFT JOIN
     Platforms p ON UserGames.PlatformId = p.id
 WHERE
-    UserId = ?
+  UserGames.UserId = ?
       `,
       userId
+    );
+    return userGames.map(UserGame.fromJSON);
+  }
+
+  static async getByStatus(userId, status) {
+    const userGames = await db.all(
+      this.getDefaultSql() +
+        "WHERE UserGames.UserId = ? AND UserGames.status = ?",
+      userId,
+      status
+    );
+    return userGames.map(UserGame.fromJSON);
+  }
+
+  static async getByRecommendation(userId, recommendation) {
+    const userGames = await db.all(
+      this.getDefaultSql() +
+        "WHERE UserGames.UserId = ? AND UserGames.recommendation = ?",
+      userId,
+      recommendation
     );
     return userGames.map(UserGame.fromJSON);
   }

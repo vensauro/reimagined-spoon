@@ -1,0 +1,124 @@
+/*Secção Ultimo Jogo----------------------------------------------------------------------------------------------------------------------------------*/
+#ultimo_jogo {
+  padding-bottom: 50px;
+}
+
+#ultimo_jogo img {
+  width: 99%;
+  border-radius: 20px;
+}
+
+#botao-jogar {
+  margin-top: 10px;
+  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
+  height: 20px;
+  padding: 15px;
+  border-radius: 15px;
+  border: 2px solid black;
+  font-family: var(--fonte-padrao);
+  background-image: linear-gradient(
+    to right,
+    #ff7a00 4.24%,
+    #ffb800 79.05%,
+    #ff7a00 100%
+  );
+  transition: 0.8s;
+}
+
+#botao-jogar a {
+  text-decoration: none;
+}
+
+#botao-jogar:hover {
+  transform: scale(1.2);
+}
+
+/*Secção Mais Jogados no momento----------------------------------------------------------------------------------------------------------------------*/
+
+.home-state-zero-text {
+  font-family: var(--fonte-padrao);
+  font-weight: 600;
+  color: white;
+  font-size: 16px;
+  transition-duration: 0.8s;
+  padding: 5px;
+
+  text-align: center;
+  width: 100%;
+
+  grid-column: 1/-1
+}
+
+.home-game-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  transition-duration: 0.8s;
+}
+
+.home-game-card img:hover {
+  transform: scale(1.1);
+}
+
+.home-game-card-title {
+  /*Configuração global para todas as sections em relação ao link tanto da img e do texto que foi desativada a função :hover */
+  text-decoration: none;
+  font-family: var(--fonte-padrao);
+  font-weight: 600;
+  color: white;
+  font-size: 16px;
+  transition-duration: 0.8s;
+  padding: 5px;
+
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+}
+
+
+
+/* Desativei essa funcionalidade e substituir na foto , pois caso o nome seja muito grande a a quebra do box
+.link_jogo:hover{
+  background-color: var(--cor2);
+  border-radius: 20px;
+}
+*/
+
+/*Secção Jogando Agora----------------------------------------------------------------------------------------------------------------------*/
+
+.home-game-container-big {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 50px;
+}
+
+.home-game-container-small {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px;
+}
+
+
+/*Categorias----------------------------------------------------------------------------------------------------------------------*/
+
+.link_categoria {
+  text-decoration: none;
+  font-family: var(--fonte-padrao);
+  font-weight: 600;
+  color: white;
+  font-size: 16px;
+  transition-duration: 0.8s;
+  padding: 5px;
+}
+
+/*Funcionalidade desativa conforme falado acima 
+.link_categoria:hover{
+  background-color: var(--cor2);
+  border-radius: 20px;
+}
+*?

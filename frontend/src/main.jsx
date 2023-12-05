@@ -6,7 +6,7 @@ import "./index.css";
 import ErrorPage from "./error-page.jsx";
 import Root, { loader as rootLoader } from "./routes/root.jsx";
 
-import Index from "./routes/index.jsx";
+import Index, { loader as indexLoader } from "./routes/index.jsx";
 import { GamesPage } from "./routes/games/games.jsx";
 import {
   LoginPage,
@@ -66,7 +66,7 @@ const router = createBrowserRouter([
       {
         errorElement: <ErrorPage />,
         children: [
-          { index: true, element: <Index /> },
+          { index: true, element: <Index />, loader: indexLoader },
           { path: "/suporte", element: <SupportPage /> },
           {
             path: "/login",
