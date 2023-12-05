@@ -1,0 +1,19 @@
+.form-primary-button {
+  text-align: center;
+  display: block;
+  margin: auto;
+  width: 284px;
+  height: 40px;
+  border-radius: 10px;
+  font-family: var(--fonte-padrao);
+  font-size: 16px;
+  font-weight: 600;
+  background-color: var(--cor2);
+
+  margin-bottom: 20px;
+  transition-duration: 0.8s;
+}
+
+.form-primary-button:hover {
+  transform: scale(1.1);
+}

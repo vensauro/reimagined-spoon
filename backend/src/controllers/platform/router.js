@@ -9,8 +9,8 @@ import { removePlatform } from "./remove-platform.js";
 
 export const platformRouter = express.Router();
 
-platformRouter.get("/", authentication, wrap(listPlatforms));
-platformRouter.get("/:id", authentication, wrap(getPlatform));
+platformRouter.get("/", wrap(listPlatforms));
+platformRouter.get("/:id", wrap(getPlatform));
 platformRouter.post("/", authentication, wrap(createPlatform));
 platformRouter.put("/:id", authentication, wrap(updatePlatform));
 platformRouter.delete("/:id", authentication, wrap(removePlatform));

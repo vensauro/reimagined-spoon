@@ -5,12 +5,6 @@ import "./index.css";
 
 import ErrorPage from "./error-page.jsx";
 import Root, { loader as rootLoader } from "./routes/root.jsx";
-import Contact, {
-  loader as contactLoader,
-  action as contactAction,
-} from "./routes/contact.jsx";
-import EditContact, { action as editAction } from "./routes/edit.jsx";
-import { action as destroyAction } from "./routes/destroy";
 
 import Index from "./routes/index.jsx";
 import { GamesPage } from "./routes/games.jsx";
@@ -25,6 +19,16 @@ import {
   action as registerAction,
 } from "./routes/login/register.jsx";
 import { logout } from "./routes/login/logout.jsx";
+import {
+  Platforms,
+  loader as platformsLoader,
+  action as platformsAction,
+} from "./routes/platforms/index.jsx";
+import {
+  PlatformCreate,
+  loader as platformCreateLoader,
+  action as platformCreateAction,
+} from "./routes/platforms/platform-create/index.jsx";
 
 const router = createBrowserRouter([
   {
@@ -53,21 +57,16 @@ const router = createBrowserRouter([
           { path: "/logout", action: logout },
           { path: "/games", element: <GamesPage /> },
           {
-            path: "contacts/:contactId",
-            element: <Contact />,
-            loader: contactLoader,
-            action: contactAction,
+            path: "/plataformas",
+            element: <Platforms />,
+            loader: platformsLoader,
+            action: platformsAction,
           },
           {
-            path: "contacts/:contactId/edit",
-            element: <EditContact />,
-            loader: contactLoader,
-            action: editAction,
-          },
-          {
-            path: "contacts/:contactId/destroy",
-            action: destroyAction,
-            errorElement: <div>Oops! There was an error.</div>,
+            path: "/plataformas/criar",
+            element: <PlatformCreate />,
+            loader: platformCreateLoader,
+            action: platformCreateAction,
           },
         ],
       },

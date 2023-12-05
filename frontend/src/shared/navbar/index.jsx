@@ -23,12 +23,12 @@ export function NavBar() {
             <>
               <Link to="/">Home</Link>
               <a href="biblioteca.html">Biblioteca</a>
-              <a href="plataformas.html">Plataformas</a>
+              <Link to="/plataformas">Plataformas</Link>
             </>
           ) : (
             <>
               <Link to="/">Home</Link>
-              <a href="plataformas.html">Plataformas</a>
+              <Link to="/plataformas">Plataformas</Link>
             </>
           )}
         </nav>

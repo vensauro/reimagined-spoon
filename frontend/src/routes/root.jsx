@@ -17,7 +17,11 @@ export default function Root() {
     <>
       <NavBar />
 
-      <main className={navigation.state === "loading" ? "loading" : ""}>
+      <main
+        className={
+          navigation.state === "loading" ? "loading" : "" + " root-container"
+        }
+      >
         <Outlet />
       </main>
 

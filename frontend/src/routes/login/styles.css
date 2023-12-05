@@ -1,76 +1,10 @@
-.main-container {
-  background-color: var(--cor1);
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-image: url("../../assets/background-pattern.png");
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.divisao {
-  text-align: center; /* Centraliza o conteúdo */
-  padding-top: 20px;
-  padding-bottom: 60px;
-}
-
-.divisao p {
-  font-size: 24px; /* Tamanho da fonte para o texto "Login" */
-  margin-bottom: 10px; /* Espaço entre o texto e a linha */
-  font-family: var(--fonte-padrao);
-  font-size: 20px;
-  color: white;
-}
-
-.divisao .linha {
-  width: 300px; /* Largura da linha (ajuste conforme necessário) */
-  height: 2px; /* Altura da linha */
-  background-color: white; /* Cor da linha, você pode alterar para a cor desejada */
-  margin: 0 auto; /* Centraliza a linha horizontalmente */
-}
-
-.login-container {
-  width: 500px;
-  height: 550px;
-  margin: auto;
-  background-color: var(--cor1);
-  border-radius: 20px;
-}
-
-.register-container {
-  width: 500px;
-  padding: 10px 0;
-  /* height: 680px; */
-  margin: auto;
-  background-color: var(--cor1);
-  border-radius: 20px;
-}
-
 .login-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 16px;
-}
-
-.input-container {
-  display: inline-block;
-  font-family: var(--fonte-padrao);
-  font-size: 16px;
-  font-weight: 500;
-  color: white;
-}
-
-.input-container p {
-  text-align: left;
-}
-
-.input-container input {
-  width: 421px;
-  height: 40px;
-  border-radius: 10px;
+  padding: 15px 0;
 }
 
 #box_lembrar {

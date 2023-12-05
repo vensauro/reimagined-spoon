@@ -1,6 +1,8 @@
-import { Form, Link, redirect } from "react-router-dom";
+import { Form, Link, redirect, useActionData } from "react-router-dom";
 import "./styles.css";
 import { authClient } from "../../api/auth";
+import { FormContainer } from "../../shared/form-container";
+import { Input } from "../../shared/input";
 
 export async function action({ request }) {
   const formData = await request.formData();
@@ -48,50 +50,31 @@ export async function loader() {
 }
 
 export function RegisterPage() {
+  let actionData = useActionData();
   return (
-    <div className="main-container ">
-      <section className="register-container">
-        <div className="divisao">
-          <p>Cadastro</p>
-          <div className="linha"></div>
+    <FormContainer title="Cadastro">
+      <Form method="post" className="login-form">
+        <Input label="Nickname" type="text" name="username" />
+        <Input label="Avatar url" type="text" name="avatar" />
+        <Input label="Email" type="email" name="email" />
+        <Input label="Senha" type="password" name="password" />
+        <Input label="Repetir senha" type="password" name="repeat_password" />
+
+        {actionData?.error && (
+          <div className="error-container">
+            <p>{actionData.error}</p>
+          </div>
+        )}
+
+        <div className="register-submit-container">
+          <button className="auth-primary-button" type="submit">
+            Cadastro
+          </button>
+          <Link to="/login" className="auth-link">
+            Fazer Login
+          </Link>
         </div>
-
-        <Form method="post" className="login-form">
-          <div className="input-container">
-            <p>Nickname</p>
-            <input type="text" id="email_input" name="username" />
-          </div>
-
-          <div className="input-container">
-            <p>Avatar url</p>
-            <input type="url" id="email_input" name="avatar" />
-          </div>
-
-          <div className="input-container">
-            <p>Email</p>
-            <input type="email" id="email_input" name="email" />
-          </div>
-
-          <div className="input-container">
-            <p>Senha</p>
-            <input type="password" id="senha_input" name="password" />
-          </div>
-
-          <div className="input-container">
-            <p>Repetir Senha</p>
-            <input type="password" id="senha_input" name="password" />
-          </div>
-
-          <div className="register-submit-container">
-            <button className="auth-primary-button" type="submit">
-              Cadastro
-            </button>
-            <Link to="/login" className="auth-link">
-              Fazer Login
-            </Link>
-          </div>
-        </Form>
-      </section>
-    </div>
+      </Form>
+    </FormContainer>
   );
 }

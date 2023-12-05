@@ -1,0 +1,17 @@
+.input-container {
+  display: inline-block;
+  font-family: var(--fonte-padrao);
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+}
+
+.input-container p {
+  text-align: left;
+}
+
+.input-container input {
+  width: 421px;
+  height: 40px;
+  border-radius: 10px;
+}

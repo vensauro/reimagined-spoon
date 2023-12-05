@@ -1,0 +1,39 @@
+.form-main-container {
+  background-color: var(--cor1);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-image: url(../../assets/background-pattern.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.form-section-container {
+  width: 500px;
+  height: fit-content;
+  margin: auto;
+  background-color: var(--cor1);
+  border-radius: 20px;
+}
+
+.form-container-title {
+  text-align: center; /* Centraliza o conteúdo */
+  padding-top: 20px;
+  padding-bottom: 60px;
+}
+
+.form-container-title p {
+  font-size: 24px; /* Tamanho da fonte para o texto "Login" */
+  margin-bottom: 10px; /* Espaço entre o texto e a linha */
+  font-family: var(--fonte-padrao);
+  font-size: 20px;
+  color: white;
+}
+
+.form-container-line {
+  width: 300px; /* Largura da linha (ajuste conforme necessário) */
+  height: 2px; /* Altura da linha */
+  background-color: white; /* Cor da linha, você pode alterar para a cor desejada */
+  margin: 0 auto; /* Centraliza a linha horizontalmente */
+}
