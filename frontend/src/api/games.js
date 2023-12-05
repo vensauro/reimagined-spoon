@@ -15,3 +15,11 @@ export function createGame(json) {
 export function deleteGame(id) {
   return api.delete(`games/${id}`).json();
 }
+
+export function addCategoryToGame(gameId, categoryId) {
+  return api.post(`games/${gameId}/category/${categoryId}`).json();
+}
+
+export function removeCategoryFromGame(gameId, categoryId) {
+  return api.delete(`games/${gameId}/category/${categoryId}`).json();
+}

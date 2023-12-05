@@ -27,7 +27,7 @@ export function LibraryGame() {
   const { gameLibrary, game } = useLoaderData();
 
   // console.log(gameLibrary);
-  // console.log(game);
+  console.log(game);
   return (
     <div className="game-library-detail-root">
       <section>
@@ -50,7 +50,8 @@ export function LibraryGame() {
               Status : <span></span>
             </li>
             <li className="game-detail-info-item">
-              Categoria : <span></span>
+              Categorias :{" "}
+              <span>{game.categories.map((e) => e.name).join(", ")}</span>
             </li>
             <li className="game-detail-info-item">
               Progresso : <span></span>
@@ -87,10 +88,11 @@ export function LibraryGame() {
 }
 
 function formatDate(stringDate) {
-  const date = new Date(stringDate);
-  const day = String(date.getDay()).padStart(2, "0");
-  const month = String(date.getMonth()).padStart(2, "0");
-  const year = date.getFullYear();
+  return stringDate.split("-").reverse().join("/");
+  // const date = new Date(stringDate);
+  // const day = String(date.getDay()).padStart(2, "0");
+  // const month = String(date.getMonth()).padStart(2, "0");
+  // const year = date.getFullYear();
 
-  return `${day}/${month}/${year}`;
+  // return `${day}/${month}/${year}`;
 }
