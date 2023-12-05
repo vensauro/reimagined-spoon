@@ -22,7 +22,7 @@ export function NavBar() {
           {user ? (
             <>
               <Link to="/">Home</Link>
-              <a href="biblioteca.html">Biblioteca</a>
+              <Link to="/biblioteca">Biblioteca</Link>
               <Link to="/plataformas">Plataformas</Link>
             </>
           ) : (

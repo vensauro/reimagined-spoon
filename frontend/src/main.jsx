@@ -7,7 +7,7 @@ import ErrorPage from "./error-page.jsx";
 import Root, { loader as rootLoader } from "./routes/root.jsx";
 
 import Index from "./routes/index.jsx";
-import { GamesPage } from "./routes/games.jsx";
+import { GamesPage } from "./routes/games/games.jsx";
 import {
   LoginPage,
   loader as loginLoader,
@@ -29,6 +29,20 @@ import {
   loader as platformCreateLoader,
   action as platformCreateAction,
 } from "./routes/platforms/platform-create/index.jsx";
+import {
+  LibraryPage,
+  loader as libraryLoader,
+} from "./routes/library/index.jsx";
+import {
+  AddGameToLibraryPage,
+  loader as addToLibraryLoader,
+  action as addToLibraryAction,
+} from "./routes/library/add-to-library/index.jsx";
+import {
+  GamesCreatePage,
+  loader as gamesCreateLoader,
+  action as gamesCreateAction,
+} from "./routes/games/create/index.jsx";
 
 const router = createBrowserRouter([
   {
@@ -67,6 +81,23 @@ const router = createBrowserRouter([
             element: <PlatformCreate />,
             loader: platformCreateLoader,
             action: platformCreateAction,
+          },
+          {
+            path: "/biblioteca",
+            element: <LibraryPage />,
+            loader: libraryLoader,
+          },
+          {
+            path: "/biblioteca/adicionar",
+            element: <AddGameToLibraryPage />,
+            loader: addToLibraryLoader,
+            action: addToLibraryAction,
+          },
+          {
+            path: "/games/criar",
+            element: <GamesCreatePage />,
+            loader: gamesCreateLoader,
+            action: gamesCreateAction,
           },
         ],
       },

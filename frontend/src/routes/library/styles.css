@@ -1,0 +1,70 @@
+.library-main-container {
+  width: 980px;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+
+.create-game-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 180px;
+  height: 20px;
+  padding: 15px;
+  border-radius: 15px;
+  border: 2px solid black;
+  font-family: var(--fonte-padrao);
+  background-image: linear-gradient(
+    to right,
+    #ff7a00 4.24%,
+    #ffb800 79.05%,
+    #ff7a00 100%
+  );
+  transition: 0.8s;
+  margin-top: 50px;
+  margin-bottom: 20px;
+
+  text-decoration: none;
+}
+
+.create-game-button:hover {
+  transform: scale(1.2);
+}
+
+.games-listing {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px; /* Define o espaçamento entre as imagens */
+}
+
+.games-listing img {
+  width: 100%;
+  height: 80%;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  transition-duration: 0.8s;
+}
+
+.game-card {
+  text-decoration: none;
+}
+
+.library-game-title {
+  /*Configuração global para todas as sections em relação ao link tanto da img e do texto que foi desativada a função :hover  peguei do style primmiero pronto*/
+  text-align: center;
+  text-decoration: none;
+  font-family: var(--fonte-padrao);
+  font-weight: 600;
+  color: white;
+  font-size: 16px;
+  transition-duration: 0.8s;
+  padding: 5px;
+
+  width: 100%;
+  display: inline-block;
+}
+
+.game-library-image img:hover {
+  transform: scale(1.1);
+}

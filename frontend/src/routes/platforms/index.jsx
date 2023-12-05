@@ -2,6 +2,7 @@ import { Link, useFetcher, useLoaderData } from "react-router-dom";
 import { deletePlatform, getPlatforms } from "../../api/platforms";
 import { useUser } from "../../shared/navbar/use-user";
 import "./styles.css";
+import { PageTitle } from "../../shared/page-title";
 
 export async function loader() {
   const platforms = await getPlatforms();
@@ -21,11 +22,7 @@ export function Platforms() {
 
   return (
     <div className="platform-container">
-      <div className="divisao">
-        <div className="linha"></div>
-        <p>Plataformas</p>
-        <div className="linha"></div>
-      </div>
+      <PageTitle>Plataformas</PageTitle>
       <section className="">
         {platforms.map((platform) => (
           <div key={platform.id} className="platform-content">

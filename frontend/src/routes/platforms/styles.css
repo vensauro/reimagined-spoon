@@ -4,29 +4,6 @@
   margin: 0 auto;
 }
 
-.divisao {
-  display: flex;
-  align-items: center;
-  /* margin: 35px 0; */
-
-  font-family: var(--fonte-titulo2);
-  color: white;
-  font-size: 24px;
-  font-weight: 600;
-}
-
-.divisao p {
-  padding-left: 25px;
-  padding-right: 25px;
-}
-
-.linha {
-  flex: 1;
-  border-top: 1px solid white;
-  height: 0;
-  margin: 0 5px;
-}
-
 .platform-content {
   display: flex;
   align-items: center;

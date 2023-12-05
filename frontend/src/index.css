@@ -51,6 +51,9 @@
     #010a26 96.01%,
     #024872 100%
   );
+
+  /*o header é 135px e o footer é 110px */
+  min-height: calc(100vh - 135px - 110px);
 }
 /* html {
   box-sizing: border-box;
