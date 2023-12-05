@@ -14,10 +14,13 @@ import {
 } from "./utils/error-middleware.js";
 import { sequelize } from "./models/sequelize-init.js";
 import cors from "cors";
+import { populateDatabase } from "./utils/populate-database.js";
 
 const app = express();
 
-await sequelize.sync({ force: false });
+await sequelize.sync({ force: true });
+
+populateDatabase();
 
 app.use(express.json());
 app.use(cors());

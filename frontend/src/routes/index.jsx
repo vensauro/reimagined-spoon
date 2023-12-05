@@ -30,13 +30,20 @@ export default function Index() {
       <section id="ultimo_jogo">
         <PageTitle>Ultimo Jogo</PageTitle>
 
-        <Link to={`/biblioteca/${lastGame.game.id}`} id="HOGW">
-          <img src={lastGame.game.image} alt="Ultimo a ser jogado" />
-        </Link>
+        {!lastGame && (
+          <p className="home-state-zero-text">Adicione jogos na biblioteca!</p>
+        )}
+        {lastGame && (
+          <Link to={`/biblioteca/${lastGame.game.id}`} id="HOGW">
+            <img src={lastGame.game.image} alt="Ultimo a ser jogado" />
+          </Link>
+        )}
 
-        <div id="botao-jogar">
-          <a href="#">Jogar Agora</a>
-        </div>
+        {lastGame && (
+          <div id="botao-jogar">
+            <a href="#">Jogar Agora</a>
+          </div>
+        )}
       </section>
 
       <section id="mais">
