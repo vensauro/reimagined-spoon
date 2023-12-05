@@ -47,23 +47,23 @@ export function LibraryGame() {
             </li>
 
             <li className="game-detail-info-item">
-              Status : <span></span>
+              Status : <span>{gameLibrary.status}</span>
             </li>
             <li className="game-detail-info-item">
               Categorias :{" "}
               <span>{game.categories.map((e) => e.name).join(", ")}</span>
             </li>
             <li className="game-detail-info-item">
-              Progresso : <span></span>
+              Progresso : <span>{gameLibrary.progress}</span>
             </li>
             <li className="game-detail-info-item">
-              Recomendo : <span></span>
+              Recomendo : <span>{gameLibrary.recommendation}</span>
             </li>
             <li className="game-detail-info-item">
               Ano de Lançamento : <span>{formatDate(game.launchDate)}</span>
             </li>
             <li className="game-detail-info-item">
-              Versão : <span></span>
+              Versão : <span>{gameLibrary.mediaType}</span>
             </li>
           </ul>
 

@@ -7,6 +7,10 @@ import { notFound } from "../../utils/errors/not-found.js";
  * @typedef {Object} PlatformRequestBody
  * @property {string} rate - The game name.
  * @property {string} platformId - The game platform.
+ * @property {string} status - The user status on the game.
+ * @property {string} progress - The user progress on the game.
+ * @property {string} recommendation - The user recommendation on the game.
+ * @property {string} mediaType - The user mediaType on the game.
  */
 
 /**
@@ -15,7 +19,8 @@ import { notFound } from "../../utils/errors/not-found.js";
  * @param {import('express').Response} res - The Express response object.
  */
 export async function updateUserGame(req, res) {
-  const { rate, platformId } = req.body;
+  const { rate, platformId, mediaType, progress, recommendation, status } =
+    req.body;
   const { gameId } = req.params;
 
   const userGame = await UserGameRepository.getOne(req.user.id, gameId);
@@ -32,7 +37,11 @@ export async function updateUserGame(req, res) {
     req.user.id,
     gameId,
     rate,
-    platform.id
+    platform.id,
+    status,
+    progress,
+    recommendation,
+    mediaType
   );
 
   return updatedUserGame;

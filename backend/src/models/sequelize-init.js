@@ -45,6 +45,10 @@ const UserGame = sequelize.define("UserGame", {
     type: DataTypes.NUMBER,
     allowNull: true,
   },
+  status: DataTypes.STRING,
+  progress: DataTypes.NUMBER,
+  recommendation: DataTypes.STRING,
+  mediaType: DataTypes.STRING,
 });
 
 Platform.hasMany(UserGame);

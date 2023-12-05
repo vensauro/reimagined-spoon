@@ -3,13 +3,31 @@ import { Game } from "./game.js";
 import { Platform } from "./platform.js";
 
 class UserGame {
-  constructor(id, rate, game, platform, createdAt, updatedAt) {
+  constructor(
+    id,
+    rate,
+
+    game,
+    platform,
+
+    status,
+    progress,
+    recommendation,
+    mediaType,
+
+    createdAt,
+    updatedAt
+  ) {
     this.id = id;
     this.rate = rate;
 
     this.game = game;
-
     this.platform = platform;
+
+    this.status = status;
+    this.progress = progress;
+    this.recommendation = recommendation;
+    this.mediaType = mediaType;
 
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
@@ -19,6 +37,12 @@ class UserGame {
     const {
       id,
       rate,
+
+      status,
+      progress,
+      recommendation,
+      mediaType,
+
       createdAt,
       updatedAt,
 
@@ -55,7 +79,18 @@ class UserGame {
       platformCreatedAt,
       platformUpdatedAt
     );
-    return new UserGame(id, rate, game, platform, createdAt, updatedAt);
+    return new UserGame(
+      id,
+      rate,
+      game,
+      platform,
+      status,
+      progress,
+      recommendation,
+      mediaType,
+      createdAt,
+      updatedAt
+    );
   }
 
   toJSON() {
@@ -63,8 +98,12 @@ class UserGame {
       id: this.id,
       rate: this.rate,
 
-      game: this.game.toJSON(),
+      status: this.status,
+      progress: this.progress,
+      recommendation: this.recommendation,
+      mediaType: this.mediaType,
 
+      game: this.game.toJSON(),
       platform: this.platform.toJSON(),
 
       createdAt: this.createdAt,
@@ -80,6 +119,10 @@ export class UserGameRepository {
 SELECT
     UserGames.id as id,
     UserGames.rate as rate,
+    UserGames.status as status,
+    UserGames.progress as progress,
+    UserGames.recommendation as recommendation,
+    UserGames.mediaType as mediaType,
     UserGames.createdAt as createdAt,
     UserGames.updatedAt as updatedAt,
 
@@ -117,6 +160,10 @@ WHERE
 SELECT
     UserGames.id as id,
     UserGames.rate as rate,
+    UserGames.status as status,
+    UserGames.progress as progress,
+    UserGames.recommendation as recommendation,
+    UserGames.mediaType as mediaType,
     UserGames.createdAt as createdAt,
     UserGames.updatedAt as updatedAt,
 
@@ -156,6 +203,10 @@ WHERE
 SELECT
     UserGames.id as id,
     UserGames.rate as rate,
+    UserGames.status as status,
+    UserGames.progress as progress,
+    UserGames.recommendation as recommendation,
+    UserGames.mediaType as mediaType,
     UserGames.createdAt as createdAt,
     UserGames.updatedAt as updatedAt,
 
@@ -189,6 +240,10 @@ LEFT JOIN
 SELECT
     UserGames.id as id,
     UserGames.rate as rate,
+    UserGames.status as status,
+    UserGames.progress as progress,
+    UserGames.recommendation as recommendation,
+    UserGames.mediaType as mediaType,
     UserGames.createdAt as createdAt,
     UserGames.updatedAt as updatedAt,
 
@@ -220,13 +275,26 @@ WHERE
     return userGames.map(UserGame.fromJSON);
   }
 
-  static async create(rate, userId, gameId, platformId) {
+  static async create(
+    rate,
+    userId,
+    gameId,
+    platformId,
+    status,
+    progress,
+    recommendation,
+    mediaType
+  ) {
     const result = await db.run(
-      "INSERT INTO UserGames (rate, UserId, GameId, PlatformId, createdAt, updatedAt) VALUES (?, ?, ?, ?, datetime('now'), datetime('now'))",
+      "INSERT INTO UserGames (rate, UserId, GameId, PlatformId, status, progress, recommendation, mediaType, createdAt, updatedAt) VALUES (?, ?, ?, ?, ?, ?, ?, ?, datetime('now'), datetime('now'))",
       rate,
       userId,
       gameId,
-      platformId
+      platformId,
+      status,
+      progress,
+      recommendation,
+      mediaType
     );
 
     return result;
@@ -234,11 +302,24 @@ WHERE
     // return this.findById(result.lastID);
   }
 
-  static async update(userId, gameId, rate, platformId) {
+  static async update(
+    userId,
+    gameId,
+    rate,
+    platformId,
+    status,
+    progress,
+    recommendation,
+    mediaType
+  ) {
     await db.run(
-      "UPDATE UserGames SET rate = ?, PlatformId = ?, updatedAt = datetime('now') WHERE UserId = ? AND GameId = ?",
+      "UPDATE UserGames SET rate = ?, PlatformId = ?, status = ?, progress = ?, recommendation = ?, mediaType = ?, updatedAt = datetime('now') WHERE UserId = ? AND GameId = ?",
       rate,
       platformId,
+      status,
+      progress,
+      recommendation,
+      mediaType,
       userId,
       gameId
     );

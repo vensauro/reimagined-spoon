@@ -32,13 +32,14 @@ export async function action({ request }) {
   }
 
   const rate = Number(updates.rate);
-  if (Number.isNaN(rate)) {
+  const progress = Number(updates.progress);
+  if (Number.isNaN(rate) || Number.isNaN(progress)) {
     return {
-      error: "Nota de avaliação deve ser número",
+      error: "Nota de avaliação e Progresso deve ser número",
     };
   }
 
-  await addGameToLibrary({ ...updates, rate });
+  await addGameToLibrary({ ...updates, rate, progress });
 
   return redirect("/biblioteca");
 }
@@ -88,21 +89,50 @@ export function AddGameToLibraryPage() {
             placeholder="Selecione a plataforma"
           />
         </div>
-        {/* <div className="input-container">
-          <p>Plataforma</p>
+        <div className="input-container">
+          <p>Status</p>
           <Select
             isClearable
             options={[
-              { value: "asdas", label: "Chocolate" },
-              { value: "1234", label: "Strawberry" },
-              { value: "llll", label: "Vanilla" },
+              { value: "Jogado", label: "Jogado" },
+              { value: "Jogando", label: "Jogando" },
+              { value: "Zerado", label: "Zerado" },
+              { value: "Nunca Jogado", label: "Nunca Jogado" },
             ]}
-            name="platformId"
+            name="status"
             className="input-select"
-            placeholder="Selecione a plataforma"
+            placeholder="Selecione o status"
           />
-        </div> */}
-        <Input label="Avaliação" type="text" name="rate" />
+        </div>
+        <Input label="Avaliação" type="number" name="rate" />
+        <Input label="Progresso" type="number" name="progress" />
+        <div className="input-container">
+          <p>Recomendo o Jogo</p>
+          <Select
+            isClearable
+            options={[
+              { value: "Recomendo", label: "Sim" },
+              { value: "Não Recomendo", label: "Não" },
+              { value: "Avaliando", label: "Em avaliação" },
+            ]}
+            name="recommendation"
+            className="input-select"
+            placeholder="Qual a sua recomendação"
+          />
+        </div>
+        <div className="input-container">
+          <p>Versão do jogo</p>
+          <Select
+            isClearable
+            options={[
+              { value: "Física", label: "Física" },
+              { value: "Digital", label: "Digital" },
+            ]}
+            name="mediaType"
+            className="input-select"
+            placeholder="Selecione a mídia do jogo"
+          />
+        </div>
 
         {actionData?.error && (
           <div className="error-container">

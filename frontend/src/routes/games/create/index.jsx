@@ -71,7 +71,11 @@ export function GamesCreatePage() {
           name="name"
           defaultValue={search.name}
         />
-        <Input label="Descrição" type="text" name="description" />
+        <div className="input-container">
+          <p>Descrição</p>
+          <textarea type="text" name="description" rows={13} />
+        </div>
+
         <Input label="URL da imagem" type="text" name="image" />
         <Input label="Ano de Lançamento" type="date" name="launchDate" />
         <div className="input-container">
