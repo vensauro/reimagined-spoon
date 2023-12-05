@@ -3,6 +3,7 @@
     "datetime",
     "revalidator",
     "Revalidator",
-    "sqlite"
+    "sqlite",
+    "whatsapp"
   ]
 }

@@ -16,10 +16,10 @@ export function Footer() {
         </div>
 
         <div className="footer-links">
-          <a href="suportelogincadastro.html">
+          <Link to="/suporte">
             <img src={customerIcon} alt="suporte" />
             Suporte
-          </a>
+          </Link>
           <a href="#">
             <img src={settingsIcons} alt="configurações" />
             Configurações

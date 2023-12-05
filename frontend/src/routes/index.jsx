@@ -1,10 +1,14 @@
+import { PageTitle } from "../shared/page-title";
+
 export default function Index() {
   return (
-    <p id="zero-state">
-      This is a demo for React Router.
-      <br />
-      Check out{" "}
-      <a href="https://reactrouter.com">the docs at reactrouter.com</a>.
-    </p>
+    <div className="library-main-container">
+      <PageTitle>Ultimo Jogo</PageTitle>
+      <PageTitle>Mais Jogados no Momento</PageTitle>
+      <PageTitle>Jogando agora</PageTitle>
+      <PageTitle>Zerados</PageTitle>
+      <PageTitle>Categorias</PageTitle>
+      <PageTitle>Não Recomendados</PageTitle>
+    </div>
   );
 }

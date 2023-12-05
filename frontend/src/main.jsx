@@ -53,6 +53,7 @@ import {
   loader as editLibraryLoader,
   action as editLibraryAction,
 } from "./routes/library/edit-library-item/index.jsx";
+import { SupportPage } from "./routes/support/index.jsx";
 
 const router = createBrowserRouter([
   {
@@ -66,6 +67,7 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />,
         children: [
           { index: true, element: <Index /> },
+          { path: "/suporte", element: <SupportPage /> },
           {
             path: "/login",
             element: <LoginPage />,
