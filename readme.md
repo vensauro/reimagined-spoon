@@ -16,7 +16,8 @@ Para rodar o projeto backend, siga os seguintes passos:
 
 1. Vá para a pasta 'backend' no terminal.
 2. Execute `npm install` para instalar as dependências necessárias.
-3. Use o comando `npm run start:dev` para iniciar o servidor backend.
+3. Copie o arquivo `.env.example` em um arquivo com nome `.env`
+4. Use o comando `npm run start:dev` para iniciar o servidor backend.
 
 Certifique-se de ter o Node.js instalado globalmente na sua máquina.
 
