@@ -5,10 +5,10 @@ import { UserGameRepository } from "../../models/user-game.js";
  * @param {import('express').Request} req - The Express request object.
  * @param {import('express').Response} res - The Express response object.
  */
-export async function listUserGamesByRecommendation(req, res) {
-  const userGames = await UserGameRepository.findByRecommendation(
+export async function listUserGamesByCategory(req, res) {
+  const userGames = await UserGameRepository.findByCategory(
     req.user.id,
-    req.params.recommendation
+    req.params.categoryId
   );
 
   return userGames;

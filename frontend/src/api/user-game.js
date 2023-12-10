@@ -18,6 +18,12 @@ export function getUserGamesByRecommendation(recommendation) {
     .json();
 }
 
+export function getUserGamesByCategory(categoryId) {
+  return api
+    .get(`user-games/category`, { searchParams: { categoryId } })
+    .json();
+}
+
 export function addGameToLibrary(json) {
   return api.post("user-games", { json }).json();
 }

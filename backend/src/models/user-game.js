@@ -148,83 +148,13 @@ LEFT JOIN
   `;
   }
   static async findById(id) {
-    const userGame = await db.get(
-      `
-SELECT
-    UserGames.id as id,
-    UserGames.rate as rate,
-    UserGames.status as status,
-    UserGames.progress as progress,
-    UserGames.recommendation as recommendation,
-    UserGames.mediaType as mediaType,
-    UserGames.createdAt as createdAt,
-    UserGames.updatedAt as updatedAt,
-
-    g.id AS gameId,
-    g.name AS gameName,
-    g.description AS gameDescription,
-    g.image AS gameImage,
-    g.createdAt AS gameCreatedAt,
-    g.updatedAt AS gameUpdatedAt,
-
-    p.id AS platformId,
-    p.name AS platformName,
-    p.description AS platformDescription,
-    p.image AS platformImage,
-    p.link AS platformLink,
-    p.createdAt AS platformCreatedAt,
-    p.updatedAt AS platformUpdatedAt
-FROM
-    UserGames
-LEFT JOIN
-    Games g ON UserGames.GameId = g.id
-LEFT JOIN
-    Platforms p ON UserGames.PlatformId = p.id
-WHERE
-  id = ?
-    `,
-      id
-    );
+    const userGame = await db.get(this.getDefaultSql() + "WHERE id = ?", id);
     if (!userGame) return null;
     return UserGame.fromJSON(userGame);
   }
   static async getOne(userId, gameId) {
     const userGame = await db.get(
-      `
-SELECT
-    UserGames.id as id,
-    UserGames.rate as rate,
-    UserGames.status as status,
-    UserGames.progress as progress,
-    UserGames.recommendation as recommendation,
-    UserGames.mediaType as mediaType,
-    UserGames.createdAt as createdAt,
-    UserGames.updatedAt as updatedAt,
-
-    g.id AS gameId,
-    g.name AS gameName,
-    g.description AS gameDescription,
-    g.image AS gameImage,
-    g.createdAt AS gameCreatedAt,
-    g.updatedAt AS gameUpdatedAt,
-
-    p.id AS platformId,
-    p.name AS platformName,
-    p.description AS platformDescription,
-    p.image AS platformImage,
-    p.link AS platformLink,
-    p.createdAt AS platformCreatedAt,
-    p.updatedAt AS platformUpdatedAt
-FROM
-    UserGames
-LEFT JOIN
-    Games g ON UserGames.GameId = g.id
-LEFT JOIN
-    Platforms p ON UserGames.PlatformId = p.id
-WHERE
-    UserId = ?
-    AND GameId = ?
-  `,
+      this.getDefaultSql() + "WHERE UserId = ? AND GameId = ?",
       userId,
       gameId
     );
@@ -233,83 +163,19 @@ WHERE
   }
 
   static async findAll() {
-    const userGames = await db.all(`
-SELECT
-    UserGames.id as id,
-    UserGames.rate as rate,
-    UserGames.status as status,
-    UserGames.progress as progress,
-    UserGames.recommendation as recommendation,
-    UserGames.mediaType as mediaType,
-    UserGames.createdAt as createdAt,
-    UserGames.updatedAt as updatedAt,
-
-    g.id AS gameId,
-    g.name AS gameName,
-    g.description AS gameDescription,
-    g.image AS gameImage,
-    g.createdAt AS gameCreatedAt,
-    g.updatedAt AS gameUpdatedAt,
-
-    p.id AS platformId,
-    p.name AS platformName,
-    p.description AS platformDescription,
-    p.image AS platformImage,
-    p.link AS platformLink,
-    p.createdAt AS platformCreatedAt,
-    p.updatedAt AS platformUpdatedAt
-FROM
-    UserGames
-LEFT JOIN
-    Games g ON UserGames.GameId = g.id
-LEFT JOIN
-    Platforms p ON UserGames.PlatformId = p.id
-      `);
+    const userGames = await db.all(this.getDefaultSql());
     return userGames.map(UserGame.fromJSON);
   }
 
   static async findByUser(userId) {
     const userGames = await db.all(
-      `
-SELECT
-    UserGames.id as id,
-    UserGames.rate as rate,
-    UserGames.status as status,
-    UserGames.progress as progress,
-    UserGames.recommendation as recommendation,
-    UserGames.mediaType as mediaType,
-    UserGames.createdAt as createdAt,
-    UserGames.updatedAt as updatedAt,
-
-    g.id AS gameId,
-    g.name AS gameName,
-    g.description AS gameDescription,
-    g.image AS gameImage,
-    g.createdAt AS gameCreatedAt,
-    g.updatedAt AS gameUpdatedAt,
-
-    p.id AS platformId,
-    p.name AS platformName,
-    p.description AS platformDescription,
-    p.image AS platformImage,
-    p.link AS platformLink,
-    p.createdAt AS platformCreatedAt,
-    p.updatedAt AS platformUpdatedAt
-FROM
-    UserGames
-LEFT JOIN
-    Games g ON UserGames.GameId = g.id
-LEFT JOIN
-    Platforms p ON UserGames.PlatformId = p.id
-WHERE
-  UserGames.UserId = ?
-      `,
+      this.getDefaultSql() + "WHERE UserGames.UserId = ?",
       userId
     );
     return userGames.map(UserGame.fromJSON);
   }
 
-  static async getByStatus(userId, status) {
+  static async findByStatus(userId, status) {
     const userGames = await db.all(
       this.getDefaultSql() +
         "WHERE UserGames.UserId = ? AND UserGames.status = ?",
@@ -319,7 +185,17 @@ WHERE
     return userGames.map(UserGame.fromJSON);
   }
 
-  static async getByRecommendation(userId, recommendation) {
+  static async findByCategory(userId, categoryId) {
+    const userGames = await db.all(
+      this.getDefaultSql() +
+        "LEFT JOIN GameCategory gc ON gc.GameId = g.id WHERE UserGames.UserId = ? AND gc.CategoryId = ?",
+      userId,
+      categoryId
+    );
+    return userGames.map(UserGame.fromJSON);
+  }
+
+  static async findByRecommendation(userId, recommendation) {
     const userGames = await db.all(
       this.getDefaultSql() +
         "WHERE UserGames.UserId = ? AND UserGames.recommendation = ?",

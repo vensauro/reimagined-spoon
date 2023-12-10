@@ -68,3 +68,9 @@
 .game-library-image img:hover {
   transform: scale(1.1);
 }
+
+.category-select-container {
+  display: flex;
+  justify-content: center;
+  margin: 8px 0;
+}

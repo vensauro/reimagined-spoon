@@ -6,7 +6,7 @@ import { UserGameRepository } from "../../models/user-game.js";
  * @param {import('express').Response} res - The Express response object.
  */
 export async function listUserGamesByStatus(req, res) {
-  const userGames = await UserGameRepository.getByStatus(
+  const userGames = await UserGameRepository.findByStatus(
     req.user.id,
     req.params.recommendation
   );

@@ -120,39 +120,39 @@ export default function Index() {
 
         <div className="home-game-container-big">
           <div className="home-game-card">
-            <a href="#">
+            <Link to="/biblioteca?category=3">
               <img src="/Categorias/adventure.png" alt="" />
-            </a>
-            <a className="home-game-card-title" href="#">
+            </Link>
+            <Link className="home-game-card-title" to="/biblioteca?category=3">
               Aventura
-            </a>
+            </Link>
           </div>
 
           <div className="home-game-card">
-            <a href="#">
+            <Link to="/biblioteca?category=2">
               <img src="/Categorias/ação.png" alt="" />
-            </a>
-            <a className="home-game-card-title" href="#">
+            </Link>
+            <Link className="home-game-card-title" to="/biblioteca?category=2">
               Ação
-            </a>
+            </Link>
           </div>
 
           <div className="home-game-card">
-            <a href="#">
+            <Link to="/biblioteca?category=9">
               <img src="/Categorias/fighting_martial_arts.png" alt="" />
-            </a>
-            <a className="home-game-card-title" href="#">
+            </Link>
+            <Link className="home-game-card-title" to="/biblioteca?category=9">
               Luta
-            </a>
+            </Link>
           </div>
 
           <div className="home-game-card">
-            <a href="#">
+            <Link to="/biblioteca?category=1">
               <img src="/Categorias/rpg.png" alt="" />
-            </a>
-            <a className="home-game-card-title" href="#">
+            </Link>
+            <Link className="home-game-card-title" to="/biblioteca?category=1">
               R.P.G
-            </a>
+            </Link>
           </div>
         </div>
       </section>

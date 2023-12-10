@@ -29,16 +29,16 @@ export async function populateDatabase() {
     await db.run(`
     INSERT INTO Games (name, description, image, launchDate, createdAt, updatedAt)
     VALUES
-        ('The Witcher 3: Wild Hunt', 'Description for Game1', 'https://api.lorem.space/image/game?hash=1', datetime('2023-01-01'), datetime('now'), datetime('now')),
-        ('Grand Theft Auto V', 'Description for Game2', 'https://api.lorem.space/image/game?hash=2', datetime('2022-12-15'), datetime('now'), datetime('now')),
-        ('Red Dead Redemption 2', 'Description for Game3', 'https://api.lorem.space/image/game?hash=3', datetime('2023-03-20'), datetime('now'), datetime('now')),
-        ('The Legend of Zelda: Breath of the Wild', 'Description for Game4', 'https://api.lorem.space/image/game?hash=4', datetime('2023-05-10'), datetime('now'), datetime('now')),
-        ('God of War', 'Description for Game5', 'https://api.lorem.space/image/game?hash=5', datetime('2022-11-05'), datetime('now'), datetime('now')),
-        ('Cyberpunk 2077', 'Description for Game6', 'https://api.lorem.space/image/game?hash=6', datetime('2023-07-25'), datetime('now'), datetime('now')),
-        ('Assassins Creed Valhalla', 'Description for Game7', 'https://api.lorem.space/image/game?hash=7', datetime('2023-02-14'), datetime('now'), datetime('now')),
-        ('FIFA 22', 'Description for Game8', 'https://api.lorem.space/image/game?hash=8', datetime('2023-09-30'), datetime('now'), datetime('now')),
-        ('Minecraft', 'Description for Game9', 'https://api.lorem.space/image/game?hash=9', datetime('2022-10-18'), datetime('now'), datetime('now')),
-        ('Call of Duty: Warzone', 'Description for Game10', 'https://api.lorem.space/image/game?hash=10', datetime('2023-11-08'), datetime('now'), datetime('now'));
+        ('The Witcher 3: Wild Hunt', 'Description for Game1', 'https://api.lorem.space/image/game?w=150&h=150&hash=1', datetime('2023-01-01'), datetime('now'), datetime('now')),
+        ('Grand Theft Auto V', 'Description for Game2', 'https://api.lorem.space/image/game?w=150&h=150&hash=2', datetime('2022-12-15'), datetime('now'), datetime('now')),
+        ('Red Dead Redemption 2', 'Description for Game3', 'https://api.lorem.space/image/game?w=150&h=150&hash=3', datetime('2023-03-20'), datetime('now'), datetime('now')),
+        ('The Legend of Zelda: Breath of the Wild', 'Description for Game4', 'https://api.lorem.space/image/game?w=150&h=150&hash=4', datetime('2023-05-10'), datetime('now'), datetime('now')),
+        ('God of War', 'Description for Game5', 'https://api.lorem.space/image/game?w=150&h=150&hash=5', datetime('2022-11-05'), datetime('now'), datetime('now')),
+        ('Cyberpunk 2077', 'Description for Game6', 'https://api.lorem.space/image/game?w=150&h=150&hash=6', datetime('2023-07-25'), datetime('now'), datetime('now')),
+        ('Assassins Creed Valhalla', 'Description for Game7', 'https://api.lorem.space/image/game?w=150&h=150&hash=7', datetime('2023-02-14'), datetime('now'), datetime('now')),
+        ('FIFA 22', 'Description for Game8', 'https://api.lorem.space/image/game?w=150&h=150&hash=8', datetime('2023-09-30'), datetime('now'), datetime('now')),
+        ('Minecraft', 'Description for Game9', 'https://api.lorem.space/image/game?w=150&h=150&hash=9', datetime('2022-10-18'), datetime('now'), datetime('now')),
+        ('Call of Duty: Warzone', 'Description for Game10', 'https://api.lorem.space/image/game?w=150&h=150&hash=10', datetime('2023-11-08'), datetime('now'), datetime('now'));
     `);
   }
 
