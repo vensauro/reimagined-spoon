@@ -10,6 +10,14 @@ export function signIn(username, avatar, email, password) {
     .json();
 }
 
+export function updateUser(json) {
+  return api.put("auth/me", { json }).json();
+}
+
+export function deleteUser() {
+  return api.delete("auth/me").json();
+}
+
 export function getLoggedUser() {
   return api.get("auth/me").json();
 }

@@ -18,10 +18,15 @@
 .user-container {
   display: flex;
   justify-content: center;
-  font-family: var(--fonte-padrao);
 }
 
 .user-name {
   font-size: 1em;
   font-weight: 600;
+  color: white;
+  font-family: var(--fonte-padrao);
+}
+
+.user-menu-link {
+  text-decoration: none;
 }

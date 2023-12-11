@@ -1,0 +1,13 @@
+.profile-button-submit-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 85%;
+  margin: 14px 0;
+}
+
+.profile-logout-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 14px;
+}

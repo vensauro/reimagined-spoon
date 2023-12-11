@@ -11,7 +11,7 @@ export const loader = authLoader(async ({ request }) => {
   const url = new URL(request.url);
   const categoryId = url.searchParams.get("category");
 
-  let library = categoryId
+  const library = categoryId
     ? await getUserGamesByCategory(categoryId)
     : await getUserLibrary();
 

@@ -79,12 +79,18 @@ export class UserRepository {
       "user"
     );
   }
-  static async update(id, username, avatar) {
+  static async update(id, username, avatar, email, password) {
     await db.run(
-      "UPDATE Users SET username = ?, avatar = ?, updatedAt = datetime('now') WHERE id = ?",
+      "UPDATE Users SET username = ?, avatar = ?, email = ?, password = ?, updatedAt = datetime('now') WHERE id = ?",
       username,
       avatar,
+      email,
+      password,
       id
     );
+  }
+
+  static async delete(id) {
+    await db.run("DELETE FROM Users WHERE id = ?", id);
   }
 }

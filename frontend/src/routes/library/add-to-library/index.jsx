@@ -140,7 +140,7 @@ export function AddGameToLibraryPage() {
           </div>
         )}
 
-        <div className="platform-button-submit-container">
+        <div className="platform-button-submit-container add-library-submit-container">
           <button className="create-game-button">Adicionar Jogo</button>
         </div>
       </Form>

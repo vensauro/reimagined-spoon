@@ -100,7 +100,7 @@ export function GamesCreatePage() {
           </div>
         )}
 
-        <div className="platform-button-submit-container">
+        <div className="platform-button-submit-container ">
           <FormButton>Criar Jogo</FormButton>
         </div>
       </Form>

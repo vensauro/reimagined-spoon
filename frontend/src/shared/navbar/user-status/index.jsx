@@ -1,6 +1,4 @@
-import { Form, Link, useRouteLoaderData } from "react-router-dom";
-import medal from "../../../assets/medal-first-place.png";
-import * as Popover from "@radix-ui/react-popover";
+import { Link, useRouteLoaderData } from "react-router-dom";
 import "./styles.css";
 
 export function NavUserStatus() {
@@ -9,28 +7,14 @@ export function NavUserStatus() {
   return (
     <section className="login">
       {user ? (
-        <Popover.Root>
-          <Popover.Trigger asChild>
-            <img
-              className="user-avatar"
-              src={user.avatar}
-              alt={user.username?.[0] ?? "A"}
-            />
-          </Popover.Trigger>
+        <Link to="/profile" className="user-menu-link">
+          <img
+            className="user-avatar"
+            src={user.avatar}
+            alt={user.username?.[0] ?? "A"}
+          />
           <p className="user-container user-name">{user.username}</p>
-          <p className="user-container">
-            Mestre
-            <img src={medal} alt="" />
-          </p>
-          <Popover.Portal>
-            <Popover.Content className="popover" sideOffset={5}>
-              <Form method="post" action="logout">
-                <button className="primary-button">Sair</button>
-              </Form>
-              <Popover.Arrow className="popover-arrow" />
-            </Popover.Content>
-          </Popover.Portal>
-        </Popover.Root>
+        </Link>
       ) : (
         <Link className="primary-button" to="/login">
           Entrar

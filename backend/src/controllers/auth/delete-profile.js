@@ -15,19 +15,11 @@ import { db } from "../../utils/sqlite-db.js";
  * @param {import('express').Request<{}, {}, LoginRequestBody>} req - The Express request object.
  * @param {import('express').Response} res - The Express response object.
  */
-export async function updateProfile(req, res) {
-  const { username, avatar, email, password } = req.body;
-
-  const hashPassword = password ? await hash(password, 10) : req.user.password;
-
-  await UserRepository.update(
-    req.user.id,
-    username || req.user.username,
-    avatar || req.user.avatar,
-    email || req.user.email,
-    hashPassword
-  );
-
+export async function deleteUser(req, res) {
   const user = await UserRepository.getById(req.user.id);
+
+  console.log("deletabdio");
+  await UserRepository.delete(req.user.id);
+
   return user;
 }

@@ -54,6 +54,11 @@ import {
   action as editLibraryAction,
 } from "./routes/library/edit-library-item/index.jsx";
 import { SupportPage } from "./routes/support/index.jsx";
+import {
+  ProfilePage,
+  action as profileAction,
+  loader as profileLoader,
+} from "./routes/profile/index.jsx";
 
 const router = createBrowserRouter([
   {
@@ -81,6 +86,12 @@ const router = createBrowserRouter([
             action: registerAction,
           },
           { path: "/logout", action: logout },
+          {
+            path: "/profile",
+            element: <ProfilePage />,
+            loader: profileLoader,
+            action: profileAction,
+          },
           { path: "/games", element: <GamesPage /> },
           {
             path: "/plataformas",
