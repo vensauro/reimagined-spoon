@@ -18,7 +18,7 @@ import { populateDatabase } from "./utils/populate-database.js";
 
 const app = express();
 
-await sequelize.sync({ force: true });
+await sequelize.sync({ force: false });
 
 populateDatabase();
 

@@ -40,3 +40,26 @@
   background-color: var(--cor2);
   border-radius: 10px;
 }
+
+.title-text {
+  transition: all 0.3s ease;
+}
+@media only screen and (max-width: 768px) {
+  .main-header {
+    justify-content: space-between;
+  }
+  .title-text {
+    display: none;
+    opacity: 0;
+  }
+
+  .menu nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menu nav a {
+    font-size: 1rem;
+  }
+}

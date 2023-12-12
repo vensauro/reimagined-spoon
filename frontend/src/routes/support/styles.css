@@ -19,6 +19,7 @@
   flex-direction: column;
   align-items: center;
   padding-top: 25px;
+  color: white;
 }
 
 .suporte-links {
@@ -42,4 +43,15 @@
 
 .suporte-links a:hover img {
   transform: scale(1.2);
+}
+
+@media only screen and (max-width: 768px) {
+  .faq-container {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .suporte {
+    text-align: center;
+  }
 }

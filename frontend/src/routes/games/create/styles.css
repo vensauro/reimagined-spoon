@@ -25,3 +25,9 @@
   width: 421px;
   color: black;
 }
+
+@media only screen and (max-width: 768px) {
+  .input-select {
+    width: 100% !important;
+  }
+}

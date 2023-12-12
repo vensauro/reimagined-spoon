@@ -66,6 +66,13 @@
   /*o header é 135px e o footer é 110px */
   min-height: calc(100vh - 135px - 110px);
 }
+
+/* 
+@media only screen and (max-width: 768px) {
+  .root-container {
+    min-height: calc(100vh - 245px - 200px);
+  }
+} */
 /* html {
   box-sizing: border-box;
 }
@@ -74,6 +81,11 @@
 *:after {
   box-sizing: inherit;
 } */
+
+#root {
+  overflow: hidden;
+  max-width: 100vw;
+}
 
 body {
   /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",

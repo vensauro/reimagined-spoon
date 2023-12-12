@@ -6,6 +6,7 @@
 #ultimo_jogo img {
   width: 99%;
   border-radius: 20px;
+  height: 540px;
 }
 
 #botao-jogar {
@@ -59,6 +60,10 @@
   border-radius: 20px;
   margin-bottom: 10px;
   transition-duration: 0.8s;
+
+  /* width: 300px; */
+  height: 200px;
+  object-fit: cover;
 }
 
 .home-game-card img:hover {
@@ -116,6 +121,34 @@
   padding: 5px;
 }
 
+@media only screen and (max-width: 768px) {
+  #ultimo_jogo img {
+    height: 200px;
+  }
+  .home-game-container-small {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 0 10px;
+  }
+  .home-game-container-big {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    padding: 0 10px;
+  }
+  .home-game-card .home-category-imagem {
+    width: 85px;
+    height: 85px;
+  }
+
+  .home-game-container-big  {
+    gap: 0;
+  }
+
+  .home-category-imagem-root {
+    display: flex;
+    justify-content: center;
+  }
+}
 /*Funcionalidade desativa conforme falado acima 
 .link_categoria:hover{
   background-color: var(--cor2);

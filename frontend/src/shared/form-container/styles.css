@@ -20,7 +20,7 @@
 .form-container-title {
   text-align: center; /* Centraliza o conteúdo */
   padding-top: 20px;
-  padding-bottom: 60px;
+  padding-bottom: 40px;
 }
 
 .form-container-title p {
@@ -36,4 +36,19 @@
   height: 2px; /* Altura da linha */
   background-color: white; /* Cor da linha, você pode alterar para a cor desejada */
   margin: 0 auto; /* Centraliza a linha horizontalmente */
+}
+
+@media only screen and (max-width: 768px) {
+  .form-section-container {
+    width: 90%;
+    margin-top: 20px;
+  }
+
+  .form-container-title {
+    padding-bottom: 2px;
+  }
+
+  .form-main-container {
+    min-height: 60vh;
+  }
 }

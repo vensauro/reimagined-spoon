@@ -56,11 +56,6 @@ export function LoginPage() {
           </div>
         )}
 
-        <div id="box_lembrar">
-          <input type="checkbox" id="lembrarsenha" name="remember" />
-          <label htmlFor="lembrarsenha">Lembrar Senha</label>
-        </div>
-
         <div className="register-submit-container">
           <button className="auth-primary-button" type="submit">
             Login

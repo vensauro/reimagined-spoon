@@ -8,7 +8,7 @@ import { UserGameRepository } from "../../models/user-game.js";
 export async function listUserGamesByCategory(req, res) {
   const userGames = await UserGameRepository.findByCategory(
     req.user.id,
-    req.params.categoryId
+    req.query.categoryId
   );
 
   return userGames;

@@ -1,9 +1,8 @@
-import "./styles.css";
 import logo from "../../assets/main-logo.png";
+import "./styles.css";
 
-import { SearchButton } from "./search-button";
-import { NavUserStatus } from "./user-status";
 import { Link, useRouteLoaderData } from "react-router-dom";
+import { NavUserStatus } from "./user-status";
 
 export function NavBar() {
   let { user } = useRouteLoaderData("root");
@@ -14,7 +13,9 @@ export function NavBar() {
         <Link to="/">
           <img src={logo} alt="logotipo" />
         </Link>
-        <Link to="/">Control_Games</Link>
+        <Link to="/" className="title-text">
+          Control_Games
+        </Link>
       </section>
 
       <section className="menu">
@@ -33,8 +34,6 @@ export function NavBar() {
           )}
         </nav>
       </section>
-
-      <SearchButton />
 
       <NavUserStatus />
     </header>

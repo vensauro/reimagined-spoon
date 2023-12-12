@@ -29,7 +29,7 @@ export async function populateDatabase() {
     await db.run(`
     INSERT INTO Games (name, description, image, launchDate, createdAt, updatedAt)
     VALUES
-        ('The Witcher 3: Wild Hunt', 'Description for Game1', 'https://api.lorem.space/image/game?w=150&h=150&hash=1', datetime('2023-01-01'), datetime('now'), datetime('now')),
+        ('The Witcher 3: Wild Hunt', 'Description for Game1', 'https://cdn1.epicgames.com/offer/14ee004dadc142faaaece5a6270fb628/EGS_TheWitcher3WildHuntCompleteEdition_CDPROJEKTRED_S1_2560x1440-82eb5cf8f725e329d3194920c0c0b64f', datetime('2023-01-01'), datetime('now'), datetime('now')),
         ('Grand Theft Auto V', 'Description for Game2', 'https://api.lorem.space/image/game?w=150&h=150&hash=2', datetime('2022-12-15'), datetime('now'), datetime('now')),
         ('Red Dead Redemption 2', 'Description for Game3', 'https://api.lorem.space/image/game?w=150&h=150&hash=3', datetime('2023-03-20'), datetime('now'), datetime('now')),
         ('The Legend of Zelda: Breath of the Wild', 'Description for Game4', 'https://api.lorem.space/image/game?w=150&h=150&hash=4', datetime('2023-05-10'), datetime('now'), datetime('now')),

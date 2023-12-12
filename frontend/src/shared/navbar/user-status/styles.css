@@ -1,9 +1,9 @@
 .login {
-  display: block;
-  position: absolute;
-  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 1;
   color: white;
-  padding: 45px 25px 25px 25px;
+  padding: 0 20px;
 }
 
 .user-avatar {
@@ -29,4 +29,10 @@
 
 .user-menu-link {
   text-decoration: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .login {
+    flex-grow: 0;
+  }
 }

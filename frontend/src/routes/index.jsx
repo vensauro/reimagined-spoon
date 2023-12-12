@@ -34,7 +34,7 @@ export default function Index() {
           <p className="home-state-zero-text">Adicione jogos na biblioteca!</p>
         )}
         {lastGame && (
-          <Link to={`/biblioteca/${lastGame.game.id}`} id="HOGW">
+          <Link to={`/biblioteca/${lastGame.game.id}`}>
             <img src={lastGame.game.image} alt="Ultimo a ser jogado" />
           </Link>
         )}
@@ -56,7 +56,7 @@ export default function Index() {
           {recentPlaying.map((libraryItem) => (
             <div className="home-game-card" key={libraryItem.id}>
               <Link to={`/biblioteca/${libraryItem.game.id}`}>
-                <img src={lastGame.game.image} alt="" />
+                <img src={libraryItem.game.image} alt="" />
               </Link>
               <Link
                 className="home-game-card-title"
@@ -79,7 +79,7 @@ export default function Index() {
           {playingGames.map((libraryItem) => (
             <div className="home-game-card" key={libraryItem.id}>
               <Link to={`/biblioteca/${libraryItem.game.id}`}>
-                <img src={lastGame.game.image} alt="" />
+                <img src={libraryItem.game.image} alt="" />
               </Link>
               <Link
                 className="home-game-card-title"
@@ -102,7 +102,7 @@ export default function Index() {
           {beatenGames.map((libraryItem) => (
             <div className="home-game-card" key={libraryItem.id}>
               <Link to={`/biblioteca/${libraryItem.game.id}`}>
-                <img src={lastGame.game.image} alt="" />
+                <img src={libraryItem.game.image} alt="" />
               </Link>
               <Link
                 className="home-game-card-title"
@@ -120,8 +120,15 @@ export default function Index() {
 
         <div className="home-game-container-big">
           <div className="home-game-card">
-            <Link to="/biblioteca?category=3">
-              <img src="/Categorias/adventure.png" alt="" />
+            <Link
+              to="/biblioteca?category=3"
+              className="home-category-imagem-root"
+            >
+              <img
+                src="/Categorias/adventure.png"
+                alt=""
+                className="home-category-imagem"
+              />
             </Link>
             <Link className="home-game-card-title" to="/biblioteca?category=3">
               Aventura
@@ -129,8 +136,15 @@ export default function Index() {
           </div>
 
           <div className="home-game-card">
-            <Link to="/biblioteca?category=2">
-              <img src="/Categorias/ação.png" alt="" />
+            <Link
+              to="/biblioteca?category=2"
+              className="home-category-imagem-root"
+            >
+              <img
+                src="/Categorias/ação.png"
+                alt=""
+                className="home-category-imagem"
+              />
             </Link>
             <Link className="home-game-card-title" to="/biblioteca?category=2">
               Ação
@@ -138,8 +152,15 @@ export default function Index() {
           </div>
 
           <div className="home-game-card">
-            <Link to="/biblioteca?category=9">
-              <img src="/Categorias/fighting_martial_arts.png" alt="" />
+            <Link
+              to="/biblioteca?category=9"
+              className="home-category-imagem-root"
+            >
+              <img
+                src="/Categorias/fighting_martial_arts.png"
+                alt=""
+                className="home-category-imagem"
+              />
             </Link>
             <Link className="home-game-card-title" to="/biblioteca?category=9">
               Luta
@@ -147,8 +168,15 @@ export default function Index() {
           </div>
 
           <div className="home-game-card">
-            <Link to="/biblioteca?category=1">
-              <img src="/Categorias/rpg.png" alt="" />
+            <Link
+              to="/biblioteca?category=1"
+              className="home-category-imagem-root"
+            >
+              <img
+                src="/Categorias/rpg.png"
+                alt=""
+                className="home-category-imagem"
+              />
             </Link>
             <Link className="home-game-card-title" to="/biblioteca?category=1">
               R.P.G
@@ -167,7 +195,7 @@ export default function Index() {
           {notRecommendedGames.map((libraryItem) => (
             <div className="home-game-card" key={libraryItem.id}>
               <Link to={`/biblioteca/${libraryItem.game.id}`}>
-                <img src={lastGame.game.image} alt="" />
+                <img src={libraryItem.game.image} alt="" />
               </Link>
               <Link
                 className="home-game-card-title"

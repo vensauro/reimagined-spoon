@@ -20,10 +20,10 @@ export function Footer() {
             <img src={customerIcon} alt="suporte" />
             Suporte
           </Link>
-          <a href="#">
+          <Link to="/profile">
             <img src={settingsIcons} alt="configurações" />
             Configurações
-          </a>
+          </Link>
         </div>
       </section>
     </footer>

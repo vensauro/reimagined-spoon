@@ -8,7 +8,7 @@ import { UserGameRepository } from "../../models/user-game.js";
 export async function listUserGamesByRecommendation(req, res) {
   const userGames = await UserGameRepository.findByRecommendation(
     req.user.id,
-    req.params.recommendation
+    req.query.recommendation
   );
 
   return userGames;
